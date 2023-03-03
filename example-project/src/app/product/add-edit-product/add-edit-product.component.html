@@ -1,0 +1,29 @@
+<p-dialog header="{{modalType}} Product" [(visible)]="displayAddEditModal" [modal]="true" [style]="{ width: '50vw' }"
+  [draggable]="false" [resizable]="false" (onHide)="closeModal()">
+  <form [formGroup]="productForm" class="product-form">
+    <div class="field">
+      <label class="block" for="code">Code</label>
+      <input type="text" pInputText id="code" formControlName="code" />
+      <small class="p-error block" *ngIf="
+          productForm.controls['code'].invalid &&
+          productForm.controls['code'].dirty">Field is required</small>
+    </div>
+    <div class="field">
+      <label class="block" for="explanation">Explanation</label>
+      <input type="text" pInputText id="explanation" formControlName="explanation" />
+      <small class="p-error block" *ngIf="
+          productForm.controls['explanation'].invalid &&
+          productForm.controls['explanation'].dirty
+        ">Field is required</small>
+    </div>
+
+
+  </form>
+  <ng-template pTemplate="footer">
+    <p-button (click)="closeModal()" label="Cancel" styleClass="p-button-text"></p-button>
+
+    <p-button (click)="addEditProduct()" label="{{modalType}}" [disabled]="productForm.invalid"></p-button>
+  </ng-template>
+</p-dialog>
+
+<p-toast position="bottom-center"></p-toast>
