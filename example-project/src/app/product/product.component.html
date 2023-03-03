@@ -1,15 +1,15 @@
-
 <link rel="stylesheet" href="https://unpkg.com/primeflex@^3/primeflex.css">
 <p-card>
 
-  <button pButton pRipple type="button" class="p-button-outlined p-button-success mr-2" icon="pi pi-file-excel"  pTooltip="XLS" tooltipPosition="bottom" (click)="exportExcel()"></button>
-
-  <button pButton pRipple type="button" class="p-button-outlined " icon="pi pi-file-excel" (click)="exportPdf()" pTooltip="PDF" tooltipPosition="bottom"></button>
+  <button pButton pRipple type="button" class="p-button-outlined p-button-success mr-2" icon="pi pi-file-excel"
+    pTooltip="XLS" tooltipPosition="bottom" (click)="exportExcel()"></button>
+  <button pButton pRipple type="button" class="p-button-outlined " icon="pi pi-file-excel" (click)="exportPdf()"
+    pTooltip="PDF" tooltipPosition="bottom"></button>
 
   <div class="flex justify-content-between">
     <h2>Sector</h2>
-    <button pButton pRipple type="button" label="Add Sector" class="p-button-outlined" 
-    (click)="showAddModal()"></button>
+    <button pButton pRipple type="button" label="Add Sector" class="p-button-outlined"
+      (click)="showAddModal()"></button>
   </div>
   <p></p>
   <p-table [value]="products" [paginator]="true" [rows]="5">
@@ -26,27 +26,23 @@
         <td>{{ product.code }}</td>
         <td>{{ product.explanation }}</td>
 
-       <td>
-        <button pButton pRipple type="button" icon="pi pi-pencil" class="p-button-rounded p-button-help p-button-outlined" (click)="showEditModal(product)"></button>
-       </td>
+        <td>
+          <button pButton pRipple type="button" icon="pi pi-pencil"
+            class="p-button-rounded p-button-help p-button-outlined" (click)="showEditModal(product)"></button>
+        </td>
 
-       <td>
-        <button pButton pRipple type="button" icon="pi pi-times" class="p-button-rounded p-button-danger p-button-outlined"
-        (click)="deleteProduct(product)"></button>
-       </td>
+        <td>
+          <button pButton pRipple type="button" icon="pi pi-times"
+            class="p-button-rounded p-button-danger p-button-outlined" (click)="deleteProduct(product)"></button>
+        </td>
 
       </tr>
     </ng-template>
   </p-table>
 </p-card>
 
-<app-add-edit-product 
-[displayAddEditModal]="displayAddEditModal"
-[selectedProduct]="selectedProduct"
-(clickClose)="hideAddModal($event)"
-(clickAddEdit)="saveOrUpdateProductToList($event)">
+<app-add-edit-product [displayAddEditModal]="displayAddEditModal" [selectedProduct]="selectedProduct"
+  (clickClose)="hideAddModal($event)" (clickAddEdit)="saveOrUpdateProductToList($event)">
 
 </app-add-edit-product>
 <p-confirmDialog header="Delete"></p-confirmDialog>
-
-
