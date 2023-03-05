@@ -8,69 +8,71 @@ import {
 } from '@angular/core';
 import { Form, FormBuilder, Validators } from '@angular/forms';
 import { MessageService } from 'primeng/api';
-import { ProductService } from '../product.service';
 import { CommonModule } from '@angular/common';
 import { DialogModule } from 'primeng/dialog';
 import { ButtonModule } from 'primeng/button';
 import { ReactiveFormsModule } from '@angular/forms';
 import { InputTextModule } from 'primeng/inputtext';
 import { ToastModule } from 'primeng/toast';
+import { DropdownModule } from 'primeng/dropdown';
+import { LocationService } from '../location.service';
 
 @Component({
-  selector: 'app-add-edit-product',
-  templateUrl: './add-edit-product.component.html',
-  styleUrls: ['./add-edit-product.component.css'],
+  selector: 'app-add-edit-location',
+  templateUrl: './add-edit-location.component.html',
+  styleUrls: ['./add-edit-location.component.css'],
   standalone: true,
   imports: [
     CommonModule,
+    DropdownModule,
     DialogModule,
-
     ButtonModule,
     DialogModule,
     ReactiveFormsModule,
     InputTextModule,
     ToastModule,
   ],
+  providers: [],
 })
-export class AddEditProductComponent implements OnInit, OnChanges {
+export class AddEditLocationComponent implements OnInit, OnChanges {
   @Input() displayAddEditModal: boolean = true; //Parent → Child
-  @Input() selectedProduct: any = null;
+  @Input() selectedLocation: any = null;
   @Output() clickClose: EventEmitter<boolean> = new EventEmitter<boolean>();
   @Output() clickAddEdit: EventEmitter<any> = new EventEmitter<any>();
   modalType = 'Add';
 
-  //Child componentteki bir bilgiyi, parent componente aktarmak için aktarmak için kullanılan decoratordur. Bu aktarım genellikle “EventEmitter” ile yapılır. Yani parent componentte bulunan bir method @Output ile child componentten tetiklenerek bilgi aktarımı sağlanır. (Child →Parent)
-
-  productForm = this.fb.group({
-    code: [0, Validators.required],
-    explanation: ['', Validators.required],
+  locationForm = this.fb.group({
+    country: ['', Validators.required],
+    city: ['', Validators.required],
+    district: ['', Validators.required],
+    village: ['', Validators.required],
   });
-
   constructor(
     private fb: FormBuilder,
-    private productService: ProductService,
+    private locationService: LocationService,
     private messageService: MessageService
   ) {}
 
   ngOnInit(): void {}
 
   ngOnChanges(): void {
-    if (this.selectedProduct) {
+    if (this.selectedLocation) {
       this.modalType = 'Edit';
-      this.productForm.patchValue(this.selectedProduct);
+      this.locationForm.patchValue(this.selectedLocation);
     } else {
-      this.productForm.reset();
+      this.locationForm.reset();
       this.modalType = 'Add';
     }
   }
 
   closeModal() {
-    this.productForm.reset();
+    this.locationForm.reset();
     this.clickClose.emit(true);
   }
-  addEditProduct() {
-    this.productService
-      .AddEditProduct(this.productForm.value, this.selectedProduct)
+
+  addEditLocation() {
+    this.locationService
+      .AddEditLocation(this.locationForm.value, this.selectedLocation)
       .subscribe(
         (response) => {
           this.clickAddEdit.emit(response);

@@ -1,10 +1,4 @@
-import {
-  Component,
-  ElementRef,
-  OnDestroy,
-  OnInit,
-  ViewChild,
-} from '@angular/core';
+import { Component, OnDestroy, OnInit } from '@angular/core';
 import { ConfirmationService, MessageService } from 'primeng/api';
 import { Subscription } from 'rxjs';
 import { Product } from './product';
@@ -18,7 +12,6 @@ import { TableModule } from 'primeng/table';
 import { ButtonModule } from 'primeng/button';
 import { CardModule } from 'primeng/card';
 import { DialogModule } from 'primeng/dialog';
-import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
 import { ConfirmDialogModule } from 'primeng/confirmdialog';
 import { ToastModule } from 'primeng/toast';
 import { AddEditProductComponent } from './add-edit-product/add-edit-product.component';
@@ -36,7 +29,6 @@ import { TooltipModule } from 'primeng/tooltip';
     ButtonModule,
     CardModule,
     DialogModule,
-    BrowserAnimationsModule,
     AddEditProductComponent,
     ConfirmDialogModule,
     ToastModule,
@@ -81,13 +73,6 @@ export class ProductComponent implements OnInit, OnDestroy {
   }
 
   saveOrUpdateProductToList(newData: any) {
-    // if (newData.id === this.selectedProduct.id) {
-    //   const productIndex = this.products.findIndex(
-    //     (data) => data.id === newData.id
-    //   );
-    //   this.products[productIndex] = newData;
-    // }
-    // this.products.unshift(newData);
     this.getProductList();
   }
 
@@ -115,7 +100,8 @@ export class ProductComponent implements OnInit, OnDestroy {
             this.messageService.add({
               severity: 'error',
               summary: 'Success',
-              detail: 'The Sector is successfully deleted',
+              detail: 'The Sector is can deleted',
+              ////////////////!!!!
             });
           }
         );
