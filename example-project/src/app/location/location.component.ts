@@ -13,10 +13,12 @@ import { DialogModule } from 'primeng/dialog';
 import { ConfirmDialogModule } from 'primeng/confirmdialog';
 import { ToastModule } from 'primeng/toast';
 import { TooltipModule } from 'primeng/tooltip';
-import { AddEditLocationComponent } from './add-edit-location/add-edit-location.component';
+
+import { DropdownModule } from 'primeng/dropdown';
 import { LocationService } from './location.service';
 import { response } from 'express';
 import { Location } from './location';
+import { FormsModule } from '@angular/forms';
 
 @Component({
   selector: 'app-location',
@@ -24,8 +26,8 @@ import { Location } from './location';
   styleUrls: ['./location.component.css'],
   standalone: true,
   imports: [
+    FormsModule,
     CommonModule,
-    AddEditLocationComponent,
     HttpClientModule,
     TableModule,
     ButtonModule,
@@ -34,80 +36,78 @@ import { Location } from './location';
     ConfirmDialogModule,
     ToastModule,
     TooltipModule,
+    DropdownModule,
   ],
   providers: [ConfirmationService, MessageService],
 })
-export class LocationComponent implements OnInit, OnDestroy {
-  ngOnInit(): void {}
-
+export class LocationComponent implements OnInit {
   location: Location[] = [];
-  displayAddEditModal = false;
-  selectedLocation: any = false;
-  subscriptions: Subscription[] = [];
-  Lctsubscriptions: Subscription = new Subscription();
+  uniqueCountries: string[] = [];
+  uniqueCities: string[] = [];
+  selectedCountry!: string;
+  selectedCity!: string;
+  selectedDistrict!: string;
+  selectedVillage!: string;
 
-  constructor(
-    private locationservice: LocationService,
-    private confirmationService: ConfirmationService,
-    private messadeService: MessageService
-  ) {}
+  constructor(private locationservice: LocationService) {}
 
-  getLocationList() {
-    this.Lctsubscriptions = this.locationservice
-      .getLocation()
-      .subscribe((response) => {
-        this.location = response;
-        this.location = [...this.location];
-      });
-    this.subscriptions.push(this.Lctsubscriptions);
-  }
-
-  showAddModal() {
-    this.displayAddEditModal = true;
-    this.selectedLocation = null;
-  }
-
-  hideAddModal(isClosed: boolean) {
-    this.displayAddEditModal = !isClosed;
-  }
-
-  saveorUpdateLocationList(newData: any) {
-    this.getLocationList();
-  }
-
-  showEditModal(location: Location) {
-    this.displayAddEditModal = true;
-    this.selectedLocation = location;
-  }
-
-  deleteLocation(location: Location) {
-    this.confirmationService.confirm({
-      message: 'Are you sure that you want to delete this location?',
-      accept: () => {
-        this.locationservice.deleteLocation(location.id).subscribe(
-          (response) => {
-            this.location = this.location.filter(
-              (data) => data.id !== location.id
-            );
-            this.messadeService.add({
-              severity: 'success',
-              summary: 'Success',
-              detail: 'The Location is successfully deleted',
-            });
-          },
-          (error) => {
-            this.messadeService.add({
-              severity: 'error',
-              summary: 'Success',
-              detail: 'The Location is cant deleted',
-              ////////////////!!!!
-            });
-          }
-        );
-      },
+  ngOnInit(): void {
+    this.locationservice.getLocationList().subscribe((data) => {
+      this.location = data;
+      this.uniqueCountries = Array.from(new Set(data.map((l) => l.country)));
     });
   }
-  ngOnDestroy(): void {
-    this.subscriptions.forEach((sub) => sub.unsubscribe());
+
+  onSelectionChange(event: any) {
+    console.log('Selected country: ', this.selectedCountry);
+    const filteredLocations = this.location.filter(
+      (l) => l.country === this.selectedCountry
+    );
+    console.log('Filtered location: ', filteredLocations);
+  }
+
+  getCities(selectedCountry: string): string[] {
+    return this.location
+      .filter((l) => l.country === selectedCountry)
+      .map((l) => l.city)
+      .filter((value, index, self) => self.indexOf(value) === index);
+  }
+
+  onSelectionChangeCity(event: any) {
+    console.log('Selected City: ', this.selectedCity);
+    const filteredLocations = this.location.filter(
+      (l) => l.city === this.selectedCity
+    );
+    console.log('Filtered location: ', filteredLocations);
+  }
+
+  getDistrict(selectedCity: string): string[] {
+    return this.location
+      .filter((l) => l.city === selectedCity)
+      .map((l) => l.district)
+      .filter((value, index, self) => self.indexOf(value) === index);
+  }
+
+  onSelectionChangeDistrict(event: any) {
+    console.log('Selected district: ', this.selectedDistrict);
+    const filteredLocations = this.location.filter(
+      (l) => l.district === this.selectedDistrict
+    );
+    console.log('Filtered location: ', filteredLocations);
+  }
+
+  getVillage(selectedDistrict: string): string[] {
+    return this.location
+      .filter((l) => l.district === selectedDistrict)
+      .map((l) => l.village)
+      .filter((value, index, self) => self.indexOf(value) === index);
+  }
+
+  onSelectionChangeVillage(event: any) {
+    console.log('Selected village: ', this.selectedVillage);
+    const filteredLocations = this.location.filter(
+      (l) => l.village === this.selectedVillage
+    );
+    console.log('Filtered location: ', filteredLocations);
   }
 }

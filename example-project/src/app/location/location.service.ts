@@ -1,6 +1,7 @@
 import { HttpClient } from '@angular/common/http';
 import { Injectable } from '@angular/core';
 import { Observable } from 'rxjs';
+import { City, Country, District, Location } from './location';
 
 @Injectable({
   providedIn: 'root',
@@ -8,10 +9,8 @@ import { Observable } from 'rxjs';
 export class LocationService {
   constructor(private http: HttpClient) {}
 
-  getLocation(): Observable<Location[]> {
-    return this.http.get<Location[]>(
-      'http://localhost:3000/location?sort=desc'
-    );
+  getLocationList(): Observable<Location[]> {
+    return this.http.get<Location[]>('http://localhost:3000/location');
   }
 
   AddEditLocation(postData: any, selectedLct: any) {

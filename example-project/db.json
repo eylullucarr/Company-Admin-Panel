@@ -18,11 +18,51 @@
   ],
   "location": [
     {
-      "counrty": "54543",
-      "city": "gfdgfdgfd",
-      "district": "gfdgfdgfd",
-      "village": "gfdgfdgfd",
-      "id": 5
+      
+      "country": "Turkiye",
+      "city": "adana",
+      "district": "ilçeanada",
+      "village": "köyadana",
+      "id": 1
+    },
+    {
+      "country": "amerika",
+      "city": "la",
+      "district": "ilçela",
+      "village": "köyla",
+      "id": 2
+    },
+    {
+      
+      "country": "Turkiye",
+      "city": "ordu",
+      "district": "ilceordu",
+      "village": "köyordu",
+      "id": 1
+    },
+    {
+      
+      "country": "Turkiye",
+      "city": "ordu",
+      "district": "ilceordu",
+      "village": "köyordu3",
+      "id": 1
+    },
+    {
+      
+      "country": "Turkiye",
+      "city": "ordu",
+      "district": "ilceordu2",
+      "village": "köyordu2",
+      "id": 1
     }
-  ]
+  ],
+  "posts": [
+    { "id": 1, "title": "json-server", "author": "typicode" }
+  ],
+  "comments": [
+    { "id": 1, "body": "some comment", "postId": 1 }
+  ],
+  "profile": { "name": "typicode" }
+
 }

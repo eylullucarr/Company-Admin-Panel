@@ -1,1 +1,15 @@
-<p>location works!</p>
+<p-card>
+
+    <p-dropdown [options]="uniqueCountries" [(ngModel)]="selectedCountry" placeholder="-- Seçiniz --"
+        (onChange)="onSelectionChange($event.value)"></p-dropdown>
+    <p></p>
+    <p-dropdown [options]="getCities(selectedCountry)" [(ngModel)]="selectedCity" placeholder="-- Select City --"
+        (onChange)="onSelectionChangeCity($event.value)"> </p-dropdown>
+    <p></p>
+    <p-dropdown [options]="getDistrict(selectedCity)" [(ngModel)]="selectedDistrict" placeholder="-- Select District--"
+        (onChange)="onSelectionChangeDistrict($event.value)"></p-dropdown>
+    <p></p>
+    <p-dropdown [options]="getVillage(selectedDistrict)" [(ngModel)]="selectedVillage" placeholder="-- Select Village--"
+        (onChange)="onSelectionChangeVillage($event.value)"></p-dropdown>
+
+</p-card>
