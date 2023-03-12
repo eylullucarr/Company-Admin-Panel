@@ -14,11 +14,20 @@
       "code": "54543",
       "explanation": "gfdgfdgfd",
       "id": 5
+    },
+    {
+      "code": "3",
+      "explanation": "fe",
+      "id": 6
+    },
+    {
+      "code": "2",
+      "explanation": "e",
+      "id": 7
     }
   ],
   "location": [
     {
-      
       "country": "Turkiye",
       "city": "adana",
       "district": "ilçeanada",
@@ -33,7 +42,6 @@
       "id": 2
     },
     {
-      
       "country": "Turkiye",
       "city": "ordu",
       "district": "ilceordu",
@@ -41,7 +49,6 @@
       "id": 1
     },
     {
-      
       "country": "Turkiye",
       "city": "ordu",
       "district": "ilceordu",
@@ -49,7 +56,6 @@
       "id": 1
     },
     {
-      
       "country": "Turkiye",
       "city": "ordu",
       "district": "ilceordu2",
@@ -58,11 +64,20 @@
     }
   ],
   "posts": [
-    { "id": 1, "title": "json-server", "author": "typicode" }
+    {
+      "id": 1,
+      "title": "json-server",
+      "author": "typicode"
+    }
   ],
   "comments": [
-    { "id": 1, "body": "some comment", "postId": 1 }
+    {
+      "id": 1,
+      "body": "some comment",
+      "postId": 1
+    }
   ],
-  "profile": { "name": "typicode" }
-
+  "profile": {
+    "name": "typicode"
+  }
 }

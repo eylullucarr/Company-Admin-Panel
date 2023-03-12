@@ -38,7 +38,7 @@ import { TooltipModule } from 'primeng/tooltip';
 })
 export class ProductComponent implements OnInit, OnDestroy {
   products: Product[] = [];
-  displayAddEditModal = false;
+  displayAddEditModal = false; //ekleme ekranının görünürlüğü
   selectedProduct: any = null;
   subscriptions: Subscription[] = [];
   Ptdsubscriptions: Subscription = new Subscription();
@@ -57,28 +57,39 @@ export class ProductComponent implements OnInit, OnDestroy {
     this.Ptdsubscriptions = this.productService
       .getProducts()
       .subscribe((response) => {
+        //getProducts bir observable nesnesi döndürür(Product[])
+        //.subscribe ile bu nesneye abone olunur ve sonuçlar response değişkeninde saklanır
         this.products = response;
+        //product burada güncellenir, çünkü dbden alınmış bilgiler üstte response'a atanmıştır.
         this.products = [...this.products];
+        //iste burasını anlamadım ya
       });
+    console.log(this.products);
     this.subscriptions.push(this.Ptdsubscriptions);
+    //güncel alınan veriler Ptdsubscriptions objesinden subscriptions dizisine pushlanır.
   }
 
   showAddModal() {
     this.displayAddEditModal = true;
     this.selectedProduct = null;
+    //modali açtığında boş gelir
   }
 
   hideAddModal(isClosed: boolean) {
     this.displayAddEditModal = !isClosed;
+    //eventtan true gelince isClosed true olur.
+    //displayine böylece false verir ve modal gizlenir.
   }
 
   saveOrUpdateProductToList(newData: any) {
     this.getProductList();
+    //data gelince sayfa
   }
 
   showEditModal(product: Product) {
     this.displayAddEditModal = true;
     this.selectedProduct = product;
+    //tıklanan mevcut producti gösterir.
   }
 
   deleteProduct(product: Product) {

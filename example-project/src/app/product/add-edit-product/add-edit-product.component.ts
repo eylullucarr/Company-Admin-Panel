@@ -24,7 +24,6 @@ import { ToastModule } from 'primeng/toast';
   imports: [
     CommonModule,
     DialogModule,
-
     ButtonModule,
     DialogModule,
     ReactiveFormsModule,
@@ -33,13 +32,12 @@ import { ToastModule } from 'primeng/toast';
   ],
 })
 export class AddEditProductComponent implements OnInit, OnChanges {
-  @Input() displayAddEditModal: boolean = true; //Parent → Child
+  @Input() displayAddEditModal: boolean = true;
   @Input() selectedProduct: any = null;
   @Output() clickClose: EventEmitter<boolean> = new EventEmitter<boolean>();
+  //clickclose olayına abone olan bileşenlere boolean türünde veri sağlar.
   @Output() clickAddEdit: EventEmitter<any> = new EventEmitter<any>();
   modalType = 'Add';
-
-  //Child componentteki bir bilgiyi, parent componente aktarmak için aktarmak için kullanılan decoratordur. Bu aktarım genellikle “EventEmitter” ile yapılır. Yani parent componentte bulunan bir method @Output ile child componentten tetiklenerek bilgi aktarımı sağlanır. (Child →Parent)
 
   productForm = this.fb.group({
     code: [0, Validators.required],
@@ -57,23 +55,31 @@ export class AddEditProductComponent implements OnInit, OnChanges {
   ngOnChanges(): void {
     if (this.selectedProduct) {
       this.modalType = 'Edit';
+      //edit modalini açar
       this.productForm.patchValue(this.selectedProduct);
+      //productforma kendi verisini yerleştirmek için patchValue() kullanılır
     } else {
       this.productForm.reset();
+      //productforma reset atar, yani kutucuklar boş gelir.
       this.modalType = 'Add';
+      //add modalini açtırır
     }
   }
 
   closeModal() {
     this.productForm.reset();
+    //formu resetler
     this.clickClose.emit(true);
+    //dışarıya true olarak gider=>product.compenent.html
   }
+
   addEditProduct() {
     this.productService
       .AddEditProduct(this.productForm.value, this.selectedProduct)
       .subscribe(
         (response) => {
           this.clickAddEdit.emit(response);
+          //verileri clickaddedite atar.
           this.closeModal();
           this.messageService.add({
             severity: 'success',

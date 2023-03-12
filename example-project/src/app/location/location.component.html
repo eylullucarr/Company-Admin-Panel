@@ -1,15 +1,26 @@
 <p-card>
 
-    <p-dropdown [options]="uniqueCountries" [(ngModel)]="selectedCountry" placeholder="-- Seçiniz --"
-        (onChange)="onSelectionChange($event.value)"></p-dropdown>
+
+    <h4>Country</h4>
+    <p-dropdown [options]="uniqueCountries" [(ngModel)]="selectedCountry" placeholder="-- Select Country --"
+        (onChange)="onSelectionChange($event.value)" [style]="{'width':'25%'}" [showClear]="true"></p-dropdown>
+    <!--
+             options => kullanıcının seçim yapabileceği bir açılır liste oluşturur.listedeki seçenekleri temsil eder.
+             ngModel =>  seçilen veriyi gösterir.
+             placeholder => yazılan yazı
+             onchange => seçim yapıldıktan sonra tetiklenir.
+    -->
     <p></p>
+    <h4>City</h4>
     <p-dropdown [options]="getCities(selectedCountry)" [(ngModel)]="selectedCity" placeholder="-- Select City --"
-        (onChange)="onSelectionChangeCity($event.value)"> </p-dropdown>
+        (onChange)="onSelectionChangeCity($event.value)" [style]="{'width':'25%'}" [showClear]="true"> </p-dropdown>
     <p></p>
+    <h4>District</h4>
     <p-dropdown [options]="getDistrict(selectedCity)" [(ngModel)]="selectedDistrict" placeholder="-- Select District--"
-        (onChange)="onSelectionChangeDistrict($event.value)"></p-dropdown>
+        (onChange)="onSelectionChangeDistrict($event.value)" [style]="{'width':'25%'}" [showClear]="true"></p-dropdown>
     <p></p>
+    <h4>Village</h4>
     <p-dropdown [options]="getVillage(selectedDistrict)" [(ngModel)]="selectedVillage" placeholder="-- Select Village--"
-        (onChange)="onSelectionChangeVillage($event.value)"></p-dropdown>
+        (onChange)="onSelectionChangeVillage($event.value)" [style]="{'width':'25%'}" [showClear]="true"></p-dropdown>
 
 </p-card>

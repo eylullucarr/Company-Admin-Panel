@@ -14,7 +14,7 @@ export class ProductService {
 
   AddEditProduct(
     postData: any,
-    selectedPdt: any //türünü fa
+    selectedPdt: any //türünü fark etmez
   ) {
     if (!selectedPdt) {
       return this.http.post('http://localhost:3000/sector', postData);

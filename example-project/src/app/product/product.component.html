@@ -44,6 +44,11 @@
 
 <app-add-edit-product [displayAddEditModal]="displayAddEditModal" [selectedProduct]="selectedProduct"
   (clickClose)="hideAddModal($event)" (clickAddEdit)="saveOrUpdateProductToList($event)">
+  <!-- clickclose'tan true gelince hideaddmodal'a eventine true girer 
+    =>product.compenent.ts -->
+  <!-- clickaddeditten verileri gelince eventa verileri atar. 
+    => product.compenent.ts-->
+
 
 </app-add-edit-product>
 <p-confirmDialog header="Delete"></p-confirmDialog>
