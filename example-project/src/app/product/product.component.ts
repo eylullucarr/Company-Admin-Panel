@@ -16,6 +16,7 @@ import { ConfirmDialogModule } from 'primeng/confirmdialog';
 import { ToastModule } from 'primeng/toast';
 import { AddEditProductComponent } from './add-edit-product/add-edit-product.component';
 import { TooltipModule } from 'primeng/tooltip';
+import { ReactiveFormsModule } from '@angular/forms';
 
 @Component({
   selector: 'app-product',
@@ -33,6 +34,9 @@ import { TooltipModule } from 'primeng/tooltip';
     ConfirmDialogModule,
     ToastModule,
     TooltipModule,
+    ReactiveFormsModule,
+
+    TableModule,
   ],
   providers: [ConfirmationService, MessageService],
 })

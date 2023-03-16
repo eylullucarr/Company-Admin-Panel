@@ -1,5 +1,61 @@
-<form [formGroup]="countryForm" (ngSubmit)="AddCountry()">
-    <input type="number" formControlName="countryId" placeholder="CountryID">
-    <input type="text" formControlName="country" placeholder="Country">
-    <button> send</button>
-</form>
+<link rel="stylesheet" href="https://unpkg.com/primeflex@^3/primeflex.css">
+
+
+<p-card>
+    <form [formGroup]="countryForm" class="float">
+        <div class="formgroup-inline">
+
+            <div class="field">
+                <label for="country">Country:</label>
+                <input id="country" type="text" formControlName="country"
+                    class="text-base text-color surface-overlay p-2 border-1 border-solid surface-border border-round appearance-none outline-none focus:border-primary"
+                    placeholder="Country">
+                <small class="p-error block" *ngIf="
+                countryForm.controls['country'].invalid &&
+                countryForm.controls['country'].dirty
+            ">Field is required</small>
+            </div>
+            <button type="button"
+                class="text-white bg-primary-500 border-primary-500 px-3 py-2 text-base border-1 border-solid border-round cursor-pointer transition-all transition-duration-200 hover:bg-primary-600 hover:border-primary-600 active:bg-primary-700 active:border-primary-700"
+                (click)="AddCountry()">Add</button>
+        </div>
+    </form>
+    <p></p>
+    <p></p>
+    <p></p>
+    <p-table [value]="country" [paginator]="true" [rows]="5">
+        <ng-template pTemplate="header">
+            <tr>
+                <th>CountryID</th>
+                <th>Country</th>
+                <th>Edit</th>
+                <th>Delete</th>
+
+            </tr>
+        </ng-template>
+        <ng-template pTemplate="body" let-country>
+            <tr>
+                <td>{{ country.id }}</td>
+                <td>{{ country.country }}</td>
+                <td>
+                    <button pButton pRipple type="button" icon="pi pi-pencil"
+                        class="p-button-rounded p-button-help p-button-outlined"
+                        (click)="showEditModal(country)"></button>
+                </td>
+
+                <td>
+                    <button pButton pRipple type="button" icon="pi pi-times"
+                        class="p-button-rounded p-button-danger p-button-outlined"
+                        (click)="deleteCountry(country)"></button>
+                </td>
+
+            </tr>
+        </ng-template>
+    </p-table>
+</p-card>
+
+<app-edit-country [displayAddEditModal]="displayAddEditModal" [selectedCountry]="selectedCountry"
+    (clickClose)="hideAddModal($event)" (clickAddEdit)="saveOrUpdateProductToList($event)">
+
+</app-edit-country>
+<p-confirmDialog header="Delete"></p-confirmDialog>

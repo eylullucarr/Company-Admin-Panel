@@ -13,11 +13,18 @@ export class CountryService {
     return this.http.get<Country[]>('http://localhost:3000/country?sort=desc');
   }
 
-  AddEditCountry(postData: any) {
+  AddCountry(postData: any) {
     return this.http.post('http://localhost:3000/country', postData);
   }
 
-  deleteCountry(CountryId: number) {
-    return this.http.delete(`http://localhost:3000/country/${CountryId}`);
+  EditCountry(postData: any, selectedCountry: any) {
+    return this.http.put(
+      `http://localhost:3000/country/${selectedCountry.id}`,
+      postData
+    );
+  }
+
+  deleteCountry(id: number) {
+    return this.http.delete(`http://localhost:3000/country/${id}`);
   }
 }

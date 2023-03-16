@@ -1,20 +1,14 @@
 {
   "country": [
     {
-      "countryId": 3,
-      "country": "33",
-      "id": 1
-    },
-    {
-      "countryId": 3,
-      "country": "22",
-      "id": 2
+      "country": "e",
+      "id": 4
     }
   ],
   "sector": [
     {
       "code": "445",
-      "explanation": "ddd",
+      "explanation": "ddda",
       "id": 3
     },
     {
