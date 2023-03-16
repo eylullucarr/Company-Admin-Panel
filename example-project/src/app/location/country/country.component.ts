@@ -1,8 +1,9 @@
-import { Component, EventEmitter, ViewChild } from '@angular/core';
+import { Component, EventEmitter, OnInit, ViewChild } from '@angular/core';
 import { InputTextModule } from 'primeng/inputtext';
 import { ConfirmationService, MessageService } from 'primeng/api';
 import {
   FormBuilder,
+  FormGroup,
   FormsModule,
   NgForm,
   ReactiveFormsModule,
@@ -19,6 +20,8 @@ import { ToastModule } from 'primeng/toast';
 import { TooltipModule } from 'primeng/tooltip';
 import { CountryService } from './country.service';
 import { response } from 'express';
+import { Subscription } from 'rxjs';
+import { Country } from './country';
 
 @Component({
   selector: 'app-country',
@@ -37,28 +40,27 @@ import { response } from 'express';
   providers: [ConfirmationService, MessageService, NgForm],
 })
 export class CountryComponent {
-  clickAddEdit: EventEmitter<any> = new EventEmitter<any>();
+  country: Country[] = [];
+  countryForm: FormGroup;
 
   constructor(
     private countryservice: CountryService,
     private messageService: MessageService,
     private fb: FormBuilder
-  ) {}
-
-  countryForm = this.fb.group({
-    countryId: [0, Validators.required],
-    country: ['', Validators.required],
-  });
+  ) {
+    this.countryForm = this.fb.group({
+      countryId: [''],
+      country: [''],
+    });
+  }
 
   AddCountry() {
-    console.log(this.countryForm.value);
+    this.country = this.countryForm.value;
+    console.log(this.country);
 
-    this.countryservice.AddEditCountry(this.countryForm.value).subscribe(
+    this.countryservice.AddEditCountry(this.country).subscribe(
       (response) => {
         console.log(response);
-        this.clickAddEdit.emit(response);
-        //verileri clickaddedite atar.
-
         this.messageService.add({
           severity: 'success',
           summary: 'Success',
@@ -69,8 +71,5 @@ export class CountryComponent {
         console.log('Errror occured');
       }
     );
-    // console.log(data);
-    // console.log(`value: ${this.countryForm.value}`); //object olarak gösteriyo anlamadım
-    // console.log(this.countryForm.value);
   }
 }
