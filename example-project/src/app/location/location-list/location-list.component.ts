@@ -10,14 +10,14 @@ import { ConfirmDialogModule } from 'primeng/confirmdialog';
 import { ToastModule } from 'primeng/toast';
 import { TooltipModule } from 'primeng/tooltip';
 import { DropdownModule } from 'primeng/dropdown';
-import { LocationService } from './location.service';
-import { Location } from './location';
 import { FormsModule } from '@angular/forms';
+import { LocationList } from './location-list';
+import { LocationListService } from './location-list.service';
 
 @Component({
-  selector: 'app-location',
-  templateUrl: './location.component.html',
-  styleUrls: ['./location.component.css'],
+  selector: 'app-location-list',
+  templateUrl: './location-list.component.html',
+  styleUrls: ['./location-list.component.css'],
   standalone: true,
   imports: [
     FormsModule,
@@ -34,8 +34,8 @@ import { FormsModule } from '@angular/forms';
   ],
   providers: [ConfirmationService, MessageService],
 })
-export class LocationComponent implements OnInit {
-  location: Location[] = [];
+export class LocationListComponent implements OnInit {
+  location: LocationList[] = [];
   uniqueCountries: string[] = [];
   uniqueCities: string[] = [];
   selectedCountry!: string;
@@ -43,7 +43,7 @@ export class LocationComponent implements OnInit {
   selectedDistrict!: string;
   selectedVillage!: string;
 
-  constructor(private locationservice: LocationService) {}
+  constructor(private locationservice: LocationListService) {}
 
   ngOnInit(): void {
     this.locationservice.getLocationList().subscribe((data) => {

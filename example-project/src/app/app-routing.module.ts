@@ -1,8 +1,8 @@
 import { NgModule } from '@angular/core';
 import { RouterModule, Routes } from '@angular/router';
-import { LocationComponent } from './location/location.component';
+import { CountryComponent } from './location/country/country.component';
+import { LocationListComponent } from './location/location-list/location-list.component';
 
-import { MainPageComponent } from './main-page/main-page.component';
 import { ProductComponent } from './product/product.component';
 
 const routes: Routes = [
@@ -11,20 +11,21 @@ const routes: Routes = [
     redirectTo: 'home',
     pathMatch: 'full',
   },
-  {
-    path: 'main-page',
-    pathMatch: 'full',
-    component: MainPageComponent,
-  },
+
   {
     path: 'sector',
     pathMatch: 'full',
     component: ProductComponent,
   },
   {
-    path: 'location',
+    path: 'location-list',
     pathMatch: 'full',
-    component: LocationComponent,
+    component: LocationListComponent,
+  },
+  {
+    path: 'country',
+    pathMatch: 'full',
+    component: CountryComponent,
   },
 ];
 

@@ -1,4 +1,10 @@
 {
+  "country": [
+    {
+      "countryId": 1,
+      "country": "Turkiye"
+    }
+  ],
   "sector": [
     {
       "code": "445",
@@ -24,6 +30,16 @@
       "code": "2",
       "explanation": "e",
       "id": 7
+    },
+    {
+      "code": "5",
+      "explanation": "fsdfdsf",
+      "id": 8
+    },
+    {
+      "code": "6",
+      "explanation": "d",
+      "id": 9
     }
   ],
   "location": [
@@ -61,23 +77,11 @@
       "district": "ilceordu2",
       "village": "köyordu2",
       "id": 1
-    }
-  ],
-  "posts": [
+    },
     {
-      "id": 1,
-      "title": "json-server",
-      "author": "typicode"
+      "countryId": 0,
+      "country": "",
+      "id": 3
     }
-  ],
-  "comments": [
-    {
-      "id": 1,
-      "body": "some comment",
-      "postId": 1
-    }
-  ],
-  "profile": {
-    "name": "typicode"
-  }
+  ]
 }

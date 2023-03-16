@@ -1,0 +1,5 @@
+<form [formGroup]="countryForm" (ngSubmit)="AddCountry()">
+    <input type="number" formControlName="countryId" placeholder="CountryID">
+    <input type="text" formControlName="country" placeholder="Country">
+    <button> send</button>
+</form>

@@ -37,7 +37,7 @@ export class AddEditProductComponent implements OnInit, OnChanges {
   @Output() clickClose: EventEmitter<boolean> = new EventEmitter<boolean>();
   //clickclose olayına abone olan bileşenlere boolean türünde veri sağlar.
   @Output() clickAddEdit: EventEmitter<any> = new EventEmitter<any>();
-  modalType = 'Add';
+  modalType = '';
 
   productForm = this.fb.group({
     code: [0, Validators.required],
@@ -74,6 +74,7 @@ export class AddEditProductComponent implements OnInit, OnChanges {
   }
 
   addEditProduct() {
+    console.log(this.productForm.value);
     this.productService
       .AddEditProduct(this.productForm.value, this.selectedProduct)
       .subscribe(

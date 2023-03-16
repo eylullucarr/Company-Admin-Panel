@@ -1,8 +1,12 @@
-export interface Location {
+export interface LocationList {
   id: number;
+  countryId: number;
   country: string;
+  cityId: number;
   city: string;
+  districtId: number;
   district: string;
+  villageId: number;
   village: string;
 }
 
