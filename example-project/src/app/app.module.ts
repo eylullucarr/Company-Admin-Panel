@@ -9,6 +9,7 @@ import { CardModule } from 'primeng/card';
 import { NoopAnimationsModule } from '@angular/platform-browser/animations';
 import { ProductComponent } from './product/product.component';
 import { MenubarModule } from 'primeng/menubar';
+import { DistrictComponent } from './location/district/district.component';
 
 @NgModule({
   declarations: [AppComponent],

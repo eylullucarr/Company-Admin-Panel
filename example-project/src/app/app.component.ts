@@ -4,8 +4,8 @@ import { MenuItem } from 'primeng/api';
 
 @Component({
   selector: 'app-root',
-  templateUrl: './app.component.html',
-  styleUrls: ['./app.component.css'],
+  template: `<p-menubar [model]="items"></p-menubar>
+    <router-outlet></router-outlet>`,
 })
 export class AppComponent {
   items: MenuItem[] = [];
