@@ -18,54 +18,13 @@ import { ButtonModule } from 'primeng/button';
 import { DialogModule } from 'primeng/dialog';
 import { InputTextModule } from 'primeng/inputtext';
 import { ToastModule } from 'primeng/toast';
-import { ProductService } from 'src/app/product/product.service';
-import { CountryService } from '../country.service';
+import { Country } from '../../country/country';
+import { CountryService } from '../../country/country.service';
+import { CityService } from '../city.service';
 
 @Component({
-  selector: 'app-edit-country',
-  template: `<p-dialog
-      header="Edit Country"
-      [(visible)]="displayAddEditModal"
-      [modal]="true"
-      [style]="{ width: '50vw' }"
-      [draggable]="false"
-      [resizable]="false"
-      (onHide)="closeModal()"
-    >
-      <form [formGroup]="countryEditForm">
-        <div class="field">
-          <label class="block" for="country">Country</label>
-          <input
-            type="text"
-            pInputText
-            id="country"
-            formControlName="country"
-          />
-          <small
-            class="p-error block"
-            *ngIf="
-              countryEditForm.controls['country'].invalid &&
-              countryEditForm.controls['country'].dirty
-            "
-            >Field is required</small
-          >
-        </div>
-      </form>
-      <ng-template pTemplate="footer">
-        <p-button
-          (click)="closeModal()"
-          label="Cancel"
-          styleClass="p-button-text"
-        ></p-button>
-
-        <p-button
-          (click)="EditCountry()"
-          label="Edit"
-          [disabled]="countryEditForm.invalid"
-        ></p-button>
-      </ng-template>
-    </p-dialog>
-    <p-toast position="bottom-center"></p-toast>`,
+  selector: 'app-edit-city',
+  templateUrl: './edit-city.component.html',
   standalone: true,
   imports: [
     CommonModule,
@@ -76,44 +35,54 @@ import { CountryService } from '../country.service';
     ToastModule,
   ],
 })
-export class EditCountryComponent implements OnInit, OnChanges {
+export class EditCityComponent implements OnInit, OnChanges {
   @Input() displayAddEditModal: boolean = true;
+  @Input() selectedCity: any = null;
   @Input() selectedCountry: any = null;
+  @Input() country: Country[] = [];
+  @Input() uniqueCountries: any = null;
+
   @Output() clickClose: EventEmitter<boolean> = new EventEmitter<boolean>();
   //clickclose olayına abone olan bileşenlere boolean türünde veri sağlar.
   @Output() clickAddEdit: EventEmitter<any> = new EventEmitter<any>();
-  countryEditForm: FormGroup;
+  cityEditForm: FormGroup;
 
   constructor(
     private fb: FormBuilder,
+    private cityservice: CityService,
     private countryservice: CountryService,
     private messageService: MessageService
   ) {
-    this.countryEditForm = this.fb.group({
+    this.cityEditForm = this.fb.group({
       country: ['', Validators.required],
+      city: ['', Validators.required],
+    });
+  }
+  ngOnInit(): void {
+    this.countryservice.getCountry().subscribe((data) => {
+      this.country = data; //urlden çektiği dataları location dizisine atiyor.
+      this.uniqueCountries = Array.from(new Set(data.map((l) => l.country)));
     });
   }
 
-  ngOnInit(): void {}
-
   ngOnChanges(): void {
-    if (this.selectedCountry) {
-      this.countryEditForm.patchValue(this.selectedCountry);
+    if (this.selectedCity) {
+      this.cityEditForm.patchValue(this.selectedCity);
       //productforma kendi verisini yerleştirmek için patchValue() kullanılır
     }
   }
 
   closeModal() {
-    this.countryEditForm.reset();
+    this.cityEditForm.reset();
     //formu resetler
     this.clickClose.emit(true);
     //dışarıya true olarak gider=>product.compenent.html
   }
 
-  EditCountry() {
-    console.log(this.countryEditForm.value);
-    this.countryservice
-      .EditCountry(this.countryEditForm.value, this.selectedCountry)
+  EditCity() {
+    console.log(this.cityEditForm.value);
+    this.cityservice
+      .EditCity(this.cityEditForm.value, this.cityEditForm)
       .subscribe(
         (response) => {
           this.clickAddEdit.emit(response);

@@ -3,6 +3,21 @@
     {
       "country": "ed",
       "id": 4
+    },
+    {
+      "country": "a",
+      "id": 5
+    },
+    {
+      "country": "fds",
+      "id": 6
+    }
+  ],
+  "city": [
+    {
+      "country": "ed",
+      "city": "ds",
+      "id": 2
     }
   ],
   "sector": [
@@ -20,26 +35,6 @@
       "code": "54543",
       "explanation": "gfdgfdgfd",
       "id": 5
-    },
-    {
-      "code": "3",
-      "explanation": "fe",
-      "id": 6
-    },
-    {
-      "code": "2",
-      "explanation": "e",
-      "id": 7
-    },
-    {
-      "code": "5",
-      "explanation": "fsdfdsf",
-      "id": 8
-    },
-    {
-      "code": "6",
-      "explanation": "d",
-      "id": 9
     }
   ],
   "location": [

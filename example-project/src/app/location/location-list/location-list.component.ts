@@ -92,7 +92,7 @@ export class LocationListComponent implements OnInit {
   constructor(private locationservice: LocationListService) {}
 
   ngOnInit(): void {
-    this.locationservice.getLocationList().subscribe((data) => {
+    this.locationservice.getLocation().subscribe((data) => {
       this.location = data; //urlden çektiği dataları location dizisine atiyor.
       this.uniqueCountries = Array.from(new Set(data.map((l) => l.country)));
       //(data.map((l) => l.country)) datadaki her bir öğeye l diyor. sonra her l'nin county

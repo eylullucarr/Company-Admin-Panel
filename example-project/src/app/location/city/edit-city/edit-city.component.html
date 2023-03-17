@@ -1,0 +1,22 @@
+<p-dialog header="Edit City" [(visible)]="displayAddEditModal" [modal]="true" [style]="{ width: '50vw' }"
+    [draggable]="false" [resizable]="false" (onHide)="closeModal()">
+    <form [formGroup]="cityEditForm">
+
+        <div class="field">
+
+            <label class="block" for="city">City</label>
+            <input type="text" pInputText id="city" formControlName="city" />
+            <small class="p-error block" *ngIf="
+              cityEditForm.controls['city'].invalid &&
+              cityEditForm.controls['city'].dirty
+            ">Field is required</small>
+        </div>
+    </form>
+    <ng-template pTemplate="footer">
+        <p-button (click)="closeModal()" label="Cancel" styleClass="p-button-text"></p-button>
+
+        <p-button (click)="EditCity()" label="Edit" [disabled]="cityEditForm.invalid"></p-button>
+    </ng-template>
+</p-dialog>
+
+<p-toast position="bottom-center"></p-toast>

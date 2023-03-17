@@ -1,0 +1,67 @@
+<link rel="stylesheet" href="https://unpkg.com/primeflex@^3/primeflex.css">
+
+<p-card>
+    <form [formGroup]="cityForm" class="float">
+        <div class="field">
+            <label for="country">Country: </label>
+            <p-dropdown [options]="uniqueCountries" [(ngModel)]="selectedCountry" placeholder="-- Select Country --"
+                [style]="{ width: '25%' }" [showClear]="true" formControlName="country" class="m-2"></p-dropdown>
+            <small class="p-error block" *ngIf="
+                cityForm.controls['country'].invalid &&
+                cityForm.controls['country'].dirty
+              ">Please select a city</small>
+
+            <!--options => kullanıcının seçim yapabileceği bir açılır liste oluşturur.listedeki seçenekleri temsil eder.
+           ngModel =>  seçilen veriyi gösterir.
+           placeholder => yazılan yazı
+           onchange => seçim yapıldıktan sonra tetiklenir.-->
+            <label for="city">City:</label>
+            <input id="city" type="text" formControlName="city" class="m-2" placeholder="City" pInputText>
+            <small class="p-error block" *ngIf="
+                cityForm.controls['city'].invalid &&
+                cityForm.controls['city'].dirty
+            ">Field is required</small>
+            <button pButton pRipple type="button" label="Add" class="p-button-outlined m-2" (click)="AddCountry()"
+                [disabled]="!cityForm.valid"></button>
+
+        </div>
+
+
+    </form>
+    <p></p>
+    <p></p>
+    <p></p>
+    <p-table [value]="city" [paginator]="true" [rows]="5">
+        <ng-template pTemplate="header">
+            <tr>
+                <th>CityID</th>
+                <th>Country</th>
+                <th>City</th>
+                <th>Edit</th>
+                <th>Delete</th>
+
+            </tr>
+        </ng-template>
+        <ng-template pTemplate="body" let-city>
+            <tr>
+                <td>{{ city.id }}</td>
+                <td>{{ city.country }}</td>
+                <td>{{ city.city }}</td>
+                <td>
+                    <button pButton pRipple type="button" icon="pi pi-pencil"
+                        class="p-button-rounded p-button-help p-button-outlined" (click)="showEditModal(city)"></button>
+                </td>
+                <td>
+                    <button pButton pRipple type="button" icon="pi pi-times"
+                        class="p-button-rounded p-button-danger p-button-outlined" (click)="DeleteCity(city)"></button>
+                </td>
+
+            </tr>
+        </ng-template>
+    </p-table>
+</p-card>
+<app-edit-city [displayAddEditModal]="displayAddEditModal" [selectedCity]="selectedCity"
+    (clickClose)="hideAddModal($event)" (clickAddEdit)="saveOrUpdateProductToList($event)">
+</app-edit-city>
+
+<p-confirmDialog header="Delete"></p-confirmDialog>

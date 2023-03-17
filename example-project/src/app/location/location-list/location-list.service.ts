@@ -9,7 +9,7 @@ import { LocationList } from './location-list';
 export class LocationListService {
   constructor(private http: HttpClient) {}
 
-  getLocationList(): Observable<LocationList[]> {
+  getLocation(): Observable<LocationList[]> {
     return this.http.get<LocationList[]>('http://localhost:3000/location');
   }
 }
