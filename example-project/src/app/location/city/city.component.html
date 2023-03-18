@@ -2,6 +2,7 @@
 
 <p-card>
     <form [formGroup]="cityForm" class="float">
+        <h2>City Arrangement</h2>
         <div class="field">
             <label for="country">Country: </label>
             <p-dropdown [options]="uniqueCountries" [(ngModel)]="selectedCountry" placeholder="-- Select Country --"
@@ -23,6 +24,9 @@
             ">Field is required</small>
             <button pButton pRipple type="button" label="Add" class="p-button-outlined m-2" (click)="AddCountry()"
                 [disabled]="!cityForm.valid"></button>
+            <button pButton pRipple type="button" label="Cancel"
+                class=" p-button-outlined p-button- p-button-success m-2" (click)="ClearData()"></button>
+
 
         </div>
 

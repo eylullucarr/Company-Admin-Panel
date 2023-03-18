@@ -1,36 +1,45 @@
 <link rel="stylesheet" href="https://unpkg.com/primeflex@^3/primeflex.css">
 
 <p-card>
-    <form [formGroup]="districtForm" class="float">
-        <h2>District Arrangement</h2>
+    <form [formGroup]="villageForm" class="float">
+        <h2>Village Arrangement</h2>
         <div class="field">
             <label for="country">Country: </label>
             <p-dropdown [options]="uniqueCountries" [(ngModel)]="selectedCountry" placeholder="-- Select Country --"
                 (onChange)="onSelectionChange($event.value)" [showClear]="true" formControlName="country"
                 class="m-2"></p-dropdown>
             <small class="p-error block" *ngIf="
-            districtForm.controls['country'].invalid &&
-            districtForm.controls['country'].dirty
+            villageForm.controls['country'].invalid &&
+            villageForm.controls['country'].dirty
               ">Please select a Country</small>
-            <label for="country">City:</label>
+            <label for="city">City:</label>
             <p-dropdown [options]="getCities(selectedCountry)" [(ngModel)]="selectedCity"
                 placeholder="-- Select City --" [showClear]="true" formControlName="city" class="m-2"></p-dropdown>
             <small class="p-error block" *ngIf="
-            districtForm.controls['city'].invalid &&
-            districtForm.controls['city'].dirty
+            villageForm.controls['city'].invalid &&
+            villageForm.controls['city'].dirty
               ">Please select a city</small>
             <!--options => kullanıcının seçim yapabileceği bir açılır liste oluşturur.listedeki seçenekleri temsil eder.
            ngModel =>  seçilen veriyi gösterir.
            placeholder => yazılan yazı
            onchange => seçim yapıldıktan sonra tetiklenir.-->
             <label for="district">District:</label>
-            <input id="district" type="text" formControlName="district" class="m-2" placeholder="District" pInputText>
+            <p-dropdown [options]="getDistrict(selectedCity)" [(ngModel)]="selectedDistrict"
+                placeholder="-- Select District --" [showClear]="true" formControlName="district"
+                class="m-2"></p-dropdown>
             <small class="p-error block" *ngIf="
-            districtForm.controls['district'].invalid &&
-            districtForm.controls['district'].dirty
+            villageForm.controls['district'].invalid &&
+            villageForm.controls['district'].dirty
+              ">Please select a city</small>
+
+            <label for="village">Village:</label>
+            <input id="village" type="text" formControlName="village" class="m-2" placeholder="Village" pInputText>
+            <small class="p-error block" *ngIf="
+            villageForm.controls['village'].invalid &&
+            villageForm.controls['village'].dirty
             ">Field is required</small>
-            <button pButton pRipple type="button" label="Add" class="p-button-outlined m-2" (click)="AddDistrict()"
-                [disabled]="!districtForm.valid"></button>
+            <button pButton pRipple type="button" label="Add" class="p-button-outlined m-2" (click)="AddVillage()"
+                [disabled]="!villageForm.valid"></button>
             <button pButton pRipple type="button" label="Cancel"
                 class=" p-button-outlined p-button- p-button-success m-2" (click)="ClearData()"></button>
 
@@ -41,33 +50,35 @@
     <p></p>
     <p></p>
     <p></p>
-    <p-table [value]="district" [paginator]="true" [rows]="5">
+    <p-table [value]="village" [paginator]="true" [rows]="5">
         <ng-template pTemplate="header">
             <tr>
-                <th>DistrictID</th>
+                <th>VillageID</th>
                 <th>Country</th>
                 <th>City</th>
                 <th>District</th>
+                <th>Village</th>
                 <th>Edit</th>
                 <th>Delete</th>
 
             </tr>
         </ng-template>
-        <ng-template pTemplate="body" let-district>
+        <ng-template pTemplate="body" let-village>
             <tr>
-                <td>{{ district.id }}</td>
-                <td>{{ district.country }}</td>
-                <td>{{ district.city }}</td>
-                <td>{{ district.district }}</td>
+                <td>{{ village.id }}</td>
+                <td>{{ village.country }}</td>
+                <td>{{ village.city }}</td>
+                <td>{{ village.district }}</td>
+                <td>{{ village.village }}</td>
                 <td>
                     <button pButton pRipple type="button" icon="pi pi-pencil"
                         class="p-button-rounded p-button-help p-button-outlined"
-                        (click)="showEditModal(district)"></button>
+                        (click)="showEditModal(village)"></button>
                 </td>
                 <td>
                     <button pButton pRipple type="button" icon="pi pi-times"
                         class="p-button-rounded p-button-danger p-button-outlined"
-                        (click)="DeleteDistrict(district)"></button>
+                        (click)="DeleteVillage(village)"></button>
                 </td>
 
             </tr>
@@ -75,8 +86,8 @@
     </p-table>
 </p-card>
 
-<app-edit-district [displayAddEditModal]="displayAddEditModal" [selectedDistrict]="selectedDistrict"
+<app-edit-village [displayAddEditModal]="displayAddEditModal" [selectedVillage]="selectedVillage"
     (clickClose)="hideAddModal($event)" (clickAddEdit)="saveOrUpdateProductToList($event)">
-</app-edit-district>
+</app-edit-village>
 
 <p-confirmDialog header="Delete"></p-confirmDialog>

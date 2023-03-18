@@ -49,6 +49,7 @@ export class AppComponent {
               },
               {
                 label: 'Village',
+                routerLink: '/village',
               },
             ],
           },

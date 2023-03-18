@@ -4,6 +4,7 @@ import { CityComponent } from './location/city/city.component';
 import { CountryComponent } from './location/country/country.component';
 import { DistrictComponent } from './location/district/district.component';
 import { LocationListComponent } from './location/location-list/location-list.component';
+import { VillageComponent } from './location/village/village.component';
 
 import { ProductComponent } from './product/product.component';
 
@@ -38,6 +39,11 @@ const routes: Routes = [
     path: 'district',
     pathMatch: 'full',
     component: DistrictComponent,
+  },
+  {
+    path: 'village',
+    pathMatch: 'full',
+    component: VillageComponent,
   },
 ];
 

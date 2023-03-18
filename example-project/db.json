@@ -1,25 +1,868 @@
 {
   "country": [
     {
-      "country": "ed",
-      "id": 4
+      "country": "TURKEY",
+      "id": 1
     },
     {
-      "country": "a",
-      "id": 5
-    },
-    {
-      "country": "fds",
-      "id": 6
-    }
-  ],
-  "city": [
-    {
-      "country": "ed",
-      "city": "ds",
+      "country": "AMERİCA",
       "id": 2
     }
   ],
+  
+  "city": [
+    {
+      "country": "TURKEY",
+      "city": "ADANA",
+      "id":1
+  },
+  {
+    "country": "TURKEY",
+      "city": "ADIYAMAN",
+      "id":2
+  },
+  {
+    "country": "TURKEY",
+      "city": "AFYONKARAHİSAR",
+      "id":3
+  },
+  {
+    "country": "TURKEY",
+      "city": "AĞRI",
+      "id":4
+  },
+  {"country": "TURKEY",
+      "city": "AKSARAY",
+      "id":5
+  },
+  {"country": "TURKEY",
+      "city": "AMASYA",
+      "id":6
+  },
+  {"country": "TURKEY",
+      "city": "ANKARA",
+      "id":7
+  },
+  {"country": "TURKEY",
+      "city": "ANTALYA",
+      "id":8
+  },
+  {"country": "TURKEY",
+      "city": "ARDAHAN",
+      "id":9
+  },
+  {"country": "TURKEY",
+      "city": "ARTVİN",
+      "id":10
+  },
+  {"country": "TURKEY",
+      "city": "AYDIN",
+      "id":11
+  },
+  {"country": "TURKEY",
+      "city": "BALIKESİR",
+      "id":12
+  },
+  {"country": "TURKEY",
+      "city": "BARTIN",
+      "id":13
+  },
+  {"country": "TURKEY",
+      "city": "BATMAN",
+      "id":14
+  },
+  {"country": "TURKEY",
+      "city": "BAYBURT",
+      "id":15
+  },
+  {"country": "TURKEY",
+      "city": "BİLECİK",
+      "id":16
+  },
+  {"country": "TURKEY",
+      "city": "BİNGÖL",
+      "id":17
+  },
+  {"country": "TURKEY",
+      "city": "BİTLİS",
+      "id":18
+  },
+  {"country": "TURKEY",
+      "city": "BOLU",
+      "id":19
+  },
+  {"country": "TURKEY",
+      "city": "BURDUR",
+      "id":20
+  },
+  {"country": "TURKEY",
+      "city": "BURSA",
+      "id":21
+  },
+  {"country": "TURKEY",
+      "city": "ÇANAKKALE",
+      "id":22
+  },
+  {"country": "TURKEY",
+      "city": "ÇANKIRI",
+      "id":23
+  },
+  {"country": "TURKEY",
+      "city": "ÇORUM",
+      "id":24
+  },
+  {"country": "TURKEY",
+      "city": "DENİZLİ",
+      "id":25
+  },
+  {"country": "TURKEY",
+      "city": "DİYARBAKIR",
+      "id":26
+  },
+  {"country": "TURKEY",
+      "city": "DÜZCE",
+      "id":27
+  },
+  {"country": "TURKEY",
+      "city": "EDİRNE",
+      "id":28
+  },
+  {"country": "TURKEY",
+      "city": "ELAZIĞ",
+      "id":29
+  },
+  {"country": "TURKEY",
+      "city": "ERZİNCAN",
+      "id":30
+  },
+  {"country": "TURKEY",
+      "city": "ERZURUM",
+      "id":31
+  },
+  {"country": "TURKEY",
+      "city": "ESKİŞEHİR",
+      "id":32
+  },
+  {"country": "TURKEY",
+      "city": "GAZİANTEP",
+      "id":33
+  },
+  {"country": "TURKEY",
+      "city": "GİRESUN",
+      "id":34
+  },
+  {"country": "TURKEY",
+      "city": "GÜMÜŞHANE",
+      "id":35
+  },
+  {"country": "TURKEY",
+      "city": "HAKKARİ",
+      "id":36
+  },
+  {"country": "TURKEY",
+      "city": "HATAY",
+      "id":37
+  },
+  {"country": "TURKEY",
+      "city": "IĞDIR",
+      "id":38
+  },
+  {"country": "TURKEY",
+      "city": "ISPARTA",
+      "id":39
+  },
+  {"country": "TURKEY",
+      "city": "İSTANBUL",
+      "id":40
+  },
+  {"country": "TURKEY",
+      "city": "İZMİR",
+      "id":41
+  },
+  {"country": "TURKEY",
+      "city": "KAHRAMANMARAŞ",
+      "id":42
+  },
+  {"country": "TURKEY",
+      "city": "KARABÜK",
+      "id":43
+  },
+  {"country": "TURKEY",
+      "city": "KARAMAN",
+      "id":44
+  },
+  {"country": "TURKEY",
+      "city": "KARS",
+      "id":45
+  },
+  {"country": "TURKEY",
+      "city": "KASTAMONU",
+      "id":46
+  },
+  {"country": "TURKEY",
+      "city": "KAYSERİ",
+      "id":47
+  },
+  {"country": "TURKEY",
+      "city": "KIRIKKALE",
+      "id":48
+  },
+  {"country": "TURKEY",
+      "city": "KIRKLARELİ",
+      "id":49
+  },
+  {"country": "TURKEY",
+      "city": "KIRŞEHİR",
+      "id":50
+  },
+  {"country": "TURKEY",
+      "city": "KİLİS",
+      "id":51
+  },
+  {"country": "TURKEY",
+      "city": "KOCAELİ",
+      "id":52
+  },
+  {"country": "TURKEY",
+      "city": "KONYA",
+      "id":53
+  },
+  {"country": "TURKEY",
+      "city": "KÜTAHYA",
+      "id":54
+  },
+  {"country": "TURKEY",
+      "city": "MALATYA",
+      "id":55
+  },
+  {"country": "TURKEY",
+      "city": "MANİSA",
+      "id":56
+  },
+  {"country": "TURKEY",
+      "city": "MARDİN",
+      "id":57
+  },
+  {"country": "TURKEY",
+      "city": "MERSİN",
+      "id":58
+  },
+  {"country": "TURKEY",
+      "city": "MUĞLA",
+      "id":59
+  },
+  {"country": "TURKEY",
+      "city": "MUŞ",
+      "id":60
+  },
+  {"country": "TURKEY",
+      "city": "NEVŞEHİR",
+      "id":61
+  },
+  {"country": "TURKEY",
+      "city": "NİĞDE",
+      "id":62
+  },
+  {"country": "TURKEY",
+      "city": "ORDU",
+      "id":63
+  },
+  {"country": "TURKEY",
+      "city": "OSMANİYE",
+      "id":64
+  },
+  {"country": "TURKEY",
+      "city": "RİZE",
+      "id":65
+  },
+  {"country": "TURKEY",
+      "city": "SAKARYA",
+      "id":66
+  },
+  {"country": "TURKEY",
+      "city": "SAMSUN",
+      "id":67
+  },
+  {"country": "TURKEY",
+      "city": "SİİRT",
+      "id":68
+  },
+  {"country": "TURKEY",
+      "city": "SİNOP",
+      "id":69
+  },
+  {"country": "TURKEY",
+      "city": "SİVAS",
+      "id":70
+  },
+  {"country": "TURKEY",
+      "city": "ŞANLIURFA",
+      "id":71
+  },
+  {"country": "TURKEY",
+      "city": "ŞIRNAK",
+      "id":72
+  },
+  {"country": "TURKEY",
+      "city": "TEKİRDAĞ",
+      "id":73
+  },
+  {"country": "TURKEY",
+      "city": "TOKAT",
+      "id":74
+  },
+  {"country": "TURKEY",
+      "city": "TRABZON",
+      "id":75
+  },
+  {"country": "TURKEY",
+      "city": "TUNCELİ",
+      "id":76
+  },
+  {"country": "TURKEY",
+      "city": "UŞAK",
+      "id":77
+  },
+  {"country": "TURKEY",
+      "city": "VAN",
+      "id":78
+  },
+  {"country": "TURKEY",
+      "city": "YALOVA",
+      "id":79
+  },
+  {"country": "TURKEY",
+      "city": "YOZGAT",
+      "id":80
+  },
+  {"country": "TURKEY",
+      "city": "ZONGULDAK",
+      "id":81
+  }
+   
+  ],
+
+  "district": [
+    {"country": "TURKEY",
+      "city": "ANKARA",
+      "district": "AKYURT",
+      "id":1
+
+  },
+  {"country": "TURKEY",
+      "city": "ANKARA",
+      "district": "ALTINDAĞ",
+      "id":2
+  },
+  {"country": "TURKEY",
+      "city": "ANKARA",
+      "district": "AYAŞ",
+      "id":3
+  },
+  {"country": "TURKEY",
+      "city": "ANKARA",
+      "district": "BALA",
+      "id":4
+  },
+  {"country": "TURKEY",
+      "city": "ANKARA",
+      "district": "BEYPAZARI",
+      "id":5
+  },
+  {"country": "TURKEY",
+      "city": "ANKARA",
+      "district": "ÇAMLIDERE",
+      "id":6
+  },
+  {"country": "TURKEY",
+      "city": "ANKARA",
+      "district": "ÇANKAYA",
+      "id":7
+  },
+  {"country": "TURKEY",
+      "city": "ANKARA",
+      "district": "ÇUBUK",
+      "id":8
+  },
+  {"country": "TURKEY",
+      "city": "ANKARA",
+      "district": "ELMADAĞ",
+      "id":9
+  },
+  {"country": "TURKEY",
+      "city": "ANKARA",
+      "district": "ETİMESGUT",
+      "id":10
+  },
+  {"country": "TURKEY",
+      "city": "ANKARA",
+      "district": "EVREN",
+      "id":11
+  },
+  {"country": "TURKEY",
+      "city": "ANKARA",
+      "district": "GÖLBAŞI",
+      "id":12
+  },
+  {"country": "TURKEY",
+      "city": "ANKARA",
+      "district": "GÜDÜL",
+      "id":13
+  },
+  {"country": "TURKEY",
+      "city": "ANKARA",
+      "district": "HAYMANA",
+      "id":14
+  },
+  {"country": "TURKEY",
+      "city": "ANKARA",
+      "district": "KAHRAMANKAZAN",
+      "id":15
+  },
+  {"country": "TURKEY",
+      "city": "ANKARA",
+      "district": "KALECİK",
+      "id":16
+  },
+  {"country": "TURKEY",
+      "city": "ANKARA",
+      "district": "KEÇİÖREN",
+      "id":17
+  },
+  {"country": "TURKEY",
+      "city": "ANKARA",
+      "district": "KIZILCAHAMAM",
+      "id":18
+  },
+  {"country": "TURKEY",
+      "city": "ANKARA",
+      "district": "MAMAK",
+      "id":19
+  },
+  {"country": "TURKEY",
+      "city": "ANKARA",
+      "district": "NALLIHAN",
+      "id":20
+  },
+  {"country": "TURKEY",
+      "city": "ANKARA",
+      "district": "POLATLI",
+      "id":21
+  },
+  {"country": "TURKEY",
+      "city": "ANKARA",
+      "district": "PURSAKLAR",
+      "id":22
+  },
+  {"country": "TURKEY",
+      "city": "ANKARA",
+      "district": "SİNCAN",
+      "id":23
+  },
+  {"country": "TURKEY",
+      "city": "ANKARA",
+      "district": "ŞEREFLİKOÇHİSAR",
+      "id":24
+  },
+  {"country": "TURKEY",
+      "city": "ANKARA",
+      "district": "YENİMAHALLE",
+      "id":25
+  },
+  {"country": "TURKEY",
+    "city": "MALATYA",
+    "district": "AKÇADAĞ",
+    "id":26
+},
+{"country": "TURKEY",
+    "city": "MALATYA",
+    "district": "ARAPGİR",
+    "id":27
+},
+{"country": "TURKEY",
+    "city": "MALATYA",
+    "district": "ARGUVAN",
+    "id":28
+},
+{"country": "TURKEY",
+    "city": "MALATYA",
+    "district": "BATTALGAZİ",
+    "id":29
+},
+{"country": "TURKEY",
+    "city": "MALATYA",
+    "district": "DARENDE",
+    "id":30
+},
+{"country": "TURKEY",
+    "city": "MALATYA",
+    "district": "DOĞANŞEHİR",
+    "id":31
+},
+{"country": "TURKEY",
+    "city": "MALATYA",
+    "district": "DOĞANYOL",
+    "id":32
+},
+{"country": "TURKEY",
+    "city": "MALATYA",
+    "district": "HEKİMHAN",
+    "id":33
+},
+{"country": "TURKEY",
+    "city": "MALATYA",
+    "district": "KALE",
+    "id":34
+},
+{"country": "TURKEY",
+    "city": "MALATYA",
+    "district": "KULUNCAK",
+    "id":35
+},
+{"country": "TURKEY",
+    "city": "MALATYA",
+    "district": "PÜTÜRGE",
+    "id":36
+},
+{"country": "TURKEY",
+    "city": "MALATYA",
+    "district": "YAZIHAN",
+    "id":37
+},
+{"country": "TURKEY",
+    "city": "MALATYA",
+    "district": "YEŞİLYURT",
+    "id":38
+},
+{"country": "TURKEY",
+  "city": "İSTANBUL",
+  "district": "ADALAR",
+  "id":39
+},
+{"country": "TURKEY",
+  "city": "İSTANBUL",
+  "district": "ARNAVUTKÖY",
+  "id":40
+},
+{"country": "TURKEY",
+  "city": "İSTANBUL",
+  "district": "ATAŞEHİR",
+  "id":41
+},
+{"country": "TURKEY",
+  "city": "İSTANBUL",
+  "district": "AVCILAR",
+  "id":42
+},
+{"country": "TURKEY",
+  "city": "İSTANBUL",
+  "district": "BAĞCILAR",
+  "id":43
+},
+{"country": "TURKEY",
+  "city": "İSTANBUL",
+  "district": "BAHÇELİEVLER",
+  "id":44
+},
+{"country": "TURKEY",
+  "city": "İSTANBUL",
+  "district": "BAKIRKÖY",
+  "id":45
+},
+{"country": "TURKEY",
+  "city": "İSTANBUL",
+  "district": "BAŞAKŞEHİR",
+  "id":46
+},
+{"country": "TURKEY",
+  "city": "İSTANBUL",
+  "district": "BAYRAMPAŞA",
+  "id":47
+},
+{"country": "TURKEY",
+  "city": "İSTANBUL",
+  "district": "BEŞİKTAŞ",
+  "id":48
+},
+{"country": "TURKEY",
+  "city": "İSTANBUL",
+  "district": "BEYKOZ",
+  "id":49
+},
+{"country": "TURKEY",
+  "city": "İSTANBUL",
+  "district": "BEYLİKDÜZÜ",
+  "id":50
+},
+{"country": "TURKEY",
+  "city": "İSTANBUL",
+  "district": "BEYOĞLU",
+  "id":51
+},
+{"country": "TURKEY",
+  "city": "İSTANBUL",
+  "district": "BÜYÜKÇEKMECE",
+  "id":52
+},
+{"country": "TURKEY",
+  "city": "İSTANBUL",
+  "district": "ÇATALCA",
+  "id":53
+},
+{"country": "TURKEY",
+  "city": "İSTANBUL",
+  "district": "ÇEKMEKÖY",
+  "id":54
+},
+{"country": "TURKEY",
+  "city": "İSTANBUL",
+  "district": "ESENLER",
+  "id":55
+},
+{"country": "TURKEY",
+  "city": "İSTANBUL",
+  "district": "ESENYURT",
+  "id":56
+},
+{"country": "TURKEY",
+  "city": "İSTANBUL",
+  "district": "EYÜPSULTAN",
+  "id":57
+},
+{"country": "TURKEY",
+  "city": "İSTANBUL",
+  "district": "FATİH",
+  "id":58
+},
+{"country": "TURKEY",
+  "city": "İSTANBUL",
+  "district": "GAZİOSMANPAŞA",
+  "id":59
+},
+{"country": "TURKEY",
+  "city": "İSTANBUL",
+  "district": "GÜNGÖREN",
+  "id":60
+},
+{"country": "TURKEY",
+  "city": "İSTANBUL",
+  "district": "KADIKÖY",
+  "id":61
+},
+{"country": "TURKEY",
+  "city": "İSTANBUL",
+  "district": "KAĞITHANE",
+  "id":62
+},
+{"country": "TURKEY",
+  "city": "İSTANBUL",
+  "district": "KARTAL",
+  "id":63
+},
+{"country": "TURKEY",
+  "city": "İSTANBUL",
+  "district": "KÜÇÜKÇEKMECE",
+  "id":64
+},
+{"country": "TURKEY",
+  "city": "İSTANBUL",
+  "district": "MALTEPE",
+  "id":65
+},
+{"country": "TURKEY",
+  "city": "İSTANBUL",
+  "district": "PENDİK",
+  "id":66
+},
+{"country": "TURKEY",
+  "city": "İSTANBUL",
+  "district": "SANCAKTEPE",
+  "id":67
+},
+{"country": "TURKEY",
+  "city": "İSTANBUL",
+  "district": "SARIYER",
+  "id":68
+},
+{"country": "TURKEY",
+  "city": "İSTANBUL",
+  "district": "SİLİVRİ",
+  "id":69
+},
+{"country": "TURKEY",
+  "city": "İSTANBUL",
+  "district": "SULTANBEYLİ",
+  "id":70
+},
+{"country": "TURKEY",
+  "city": "İSTANBUL",
+  "district": "SULTANGAZİ",
+  "id":71
+},
+{"country": "TURKEY",
+  "city": "İSTANBUL",
+  "district": "ŞİLE",
+  "id":72
+},
+{"country": "TURKEY",
+  "city": "İSTANBUL",
+  "district": "ŞİŞLİ",
+  "id":73
+},
+{"country": "TURKEY",
+  "city": "İSTANBUL",
+  "district": "TUZLA",
+  "id":74
+},
+{"country": "TURKEY",
+  "city": "İSTANBUL",
+  "district": "ÜMRANİYE",
+  "id":75
+},
+{"country": "TURKEY",
+  "city": "İSTANBUL",
+  "district": "ÜSKÜDAR",
+  "id":76
+},
+{"country": "TURKEY",
+  "city": "İSTANBUL",
+  "district": "ZEYTİNBURNU",
+  "id":77
+}
+    
+  ],
+
+  "village": [
+    {"country": "TURKEY",
+      "city": "ANKARA",
+      "district": "AKYURT",
+      "village": "ATATÜRK MAH",
+      "id":1
+  },
+  {"country": "TURKEY",
+      "city": "ANKARA",
+      "district": "AKYURT",
+      "village": "BALIKHİSAR MAH",
+      "id":2
+  },
+  {"country": "TURKEY",
+      "city": "ANKARA",
+      "district": "AKYURT",
+      "village": "BEYAZIT MAH",
+      "id":3
+  },
+  {"country": "TURKEY",
+      "city": "ANKARA",
+      "district": "AKYURT",
+      "village": "BÜĞDÜZ MAH",
+      "id":4
+  },
+  {"country": "TURKEY",
+      "city": "ANKARA",
+      "district": "AKYURT",
+      "village": "CÜCÜK MAH",
+      "id":5
+  },
+  {"country": "TURKEY",
+      "city": "ANKARA",
+      "district": "AKYURT",
+      "village": "ÇAM MAH",
+      "id":6
+  },
+  {"country": "TURKEY",
+      "city": "ANKARA",
+      "district": "AKYURT",
+      "village": "ÇARDAKBAĞI MAH",
+      "id":7
+  },
+  {"country": "TURKEY",
+      "city": "ANKARA",
+      "district": "AKYURT",
+      "village": "ÇINAR MAH",
+      "id":8
+  },
+  {"country": "TURKEY",
+      "city": "ANKARA",
+      "district": "AKYURT",
+      "village": "ELECİK MAH",
+      "id":9
+  },
+  {"country": "TURKEY",
+    "city": "İSTANBUL",
+    "district": "ADALAR",
+    "village": "BURGAZADA MAH",
+    "id":10
+},
+{"country": "TURKEY",
+    "city": "İSTANBUL",
+    "district": "ADALAR",
+    "village": "HEYBELİADA MAH",
+    "id":11
+},
+{"country": "TURKEY",
+    "city": "İSTANBUL",
+    "district": "ADALAR",
+    "village": "KINALIADA MAH",
+    "id":12
+},
+{"country": "TURKEY",
+    "city": "İSTANBUL",
+    "district": "ADALAR",
+    "village": "MADEN MAH",
+    "id":13
+},
+{"country": "TURKEY",
+    "city": "İSTANBUL",
+    "district": "ADALAR",
+    "village": "NİZAM MAH",
+    "id":14
+},
+{"country": "TURKEY",
+    "city": "İSTANBUL",
+    "district": "ARNAVUTKÖY",
+    "village": "ADNAN MENDERES MAH",
+    "id":15
+},
+{"country": "TURKEY",
+  "city": "MALATYA",
+  "district": "YAZIHAN",
+  "village": "YENİ MAH",
+  "id":16
+},
+{"country": "TURKEY",
+  "city": "MALATYA",
+  "district": "YEŞİLYURT",
+  "village": "1.OSB MAH",
+  "id":17
+},
+{"country": "TURKEY",
+  "city": "MALATYA",
+  "district": "YEŞİLYURT",
+  "village": "2.OSB MAH",
+  "id":18
+},
+{"country": "TURKEY",
+  "city": "MALATYA",
+  "district": "YEŞİLYURT",
+  "village": "ABDULGAFFAR MAH",
+  "id":19
+},
+{"country": "TURKEY",
+  "city": "MALATYA",
+  "district": "YEŞİLYURT",
+  "village": "AŞAĞI BAĞLAR MAH",
+  "id":20
+},
+{"country": "TURKEY",
+  "city": "MALATYA",
+  "district": "YEŞİLYURT",
+  "village": "AŞAĞIKÖY MAH",
+  "id":21
+}
+
+  ],
+  
+ 
   "sector": [
     {
       "code": "445",

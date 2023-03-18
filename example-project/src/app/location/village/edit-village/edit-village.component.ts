@@ -1,12 +1,5 @@
 import { CommonModule } from '@angular/common';
-import {
-  Component,
-  EventEmitter,
-  Input,
-  OnChanges,
-  OnInit,
-  Output,
-} from '@angular/core';
+import { Component, EventEmitter, Input, Output } from '@angular/core';
 import {
   FormBuilder,
   FormGroup,
@@ -18,13 +11,11 @@ import { ButtonModule } from 'primeng/button';
 import { DialogModule } from 'primeng/dialog';
 import { InputTextModule } from 'primeng/inputtext';
 import { ToastModule } from 'primeng/toast';
-import { Country } from '../../country/country';
-import { CountryService } from '../../country/country.service';
-import { CityService } from '../city.service';
+import { VillageService } from '../village.service';
 
 @Component({
-  selector: 'app-edit-city',
-  templateUrl: './edit-city.component.html',
+  selector: 'app-edit-village',
+  templateUrl: './edit-village.component.html',
   standalone: true,
   imports: [
     CommonModule,
@@ -35,55 +26,50 @@ import { CityService } from '../city.service';
     ToastModule,
   ],
 })
-export class EditCityComponent implements OnInit, OnChanges {
+export class EditVillageComponent {
   @Input() displayAddEditModal: boolean = true;
-  @Input() selectedCity: any = null;
+  @Input() selectedVillage: any = null;
   @Input() selectedCountry: any = null;
-  @Input() country: Country[] = [];
   @Input() uniqueCountries: any = null;
 
   @Output() clickClose: EventEmitter<boolean> = new EventEmitter<boolean>();
   //clickclose olayına abone olan bileşenlere boolean türünde veri sağlar.
   @Output() clickAddEdit: EventEmitter<any> = new EventEmitter<any>();
-  cityEditForm: FormGroup;
+  villageEditForm: FormGroup;
 
   constructor(
     private fb: FormBuilder,
-    private cityservice: CityService,
-    private countryservice: CountryService,
+    private villageservice: VillageService,
     private messageService: MessageService
   ) {
-    this.cityEditForm = this.fb.group({
+    this.villageEditForm = this.fb.group({
       country: ['', Validators.required],
       city: ['', Validators.required],
-    });
-  }
-  ngOnInit(): void {
-    this.countryservice.getCountry().subscribe((data) => {
-      this.country = data; //urlden çektiği dataları location dizisine atiyor.
-      this.uniqueCountries = Array.from(new Set(data.map((l) => l.country)));
+      district: ['', Validators.required],
+      village: ['', Validators.required],
     });
   }
 
+  ngOnInit(): void {}
+
   ngOnChanges(): void {
-    if (this.selectedCity) {
-      console.log(this.selectedCity);
-      this.cityEditForm.patchValue(this.selectedCity);
+    if (this.selectedVillage) {
+      this.villageEditForm.patchValue(this.selectedVillage);
       //productforma kendi verisini yerleştirmek için patchValue() kullanılır
     }
   }
 
   closeModal() {
-    this.cityEditForm.reset();
+    this.villageEditForm.reset();
     //formu resetler
     this.clickClose.emit(true);
-    //dışarıya true olarak gider=>product.compenent.html
+    //dışarıya true olarak gider=>product.compenent.html(bu yüzden output olarak kullanıyoruz.)
   }
 
-  EditCity() {
-    console.log(this.cityEditForm.value);
-    this.cityservice
-      .EditCity(this.cityEditForm.value, this.cityEditForm)
+  EditVillage() {
+    console.log(this.villageEditForm.value);
+    this.villageservice
+      .EditVillage(this.villageEditForm.value, this.selectedVillage)
       .subscribe(
         (response) => {
           this.clickAddEdit.emit(response);

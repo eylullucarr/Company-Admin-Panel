@@ -26,19 +26,20 @@ import { ToastModule } from 'primeng/toast';
 import { TooltipModule } from 'primeng/tooltip';
 import { Subscription } from 'rxjs';
 import { City } from '../city/city';
-import { CityService } from '../city/city.service';
 import { Country } from '../country/country';
-import { District } from './district';
-import { DistrictService } from './district.service';
-import { EditDistrictComponent } from './edit-district/edit-district.component';
+import { District } from '../district/district';
+import { DistrictService } from '../district/district.service';
+import { EditVillageComponent } from './edit-village/edit-village.component';
+import { Village } from './village';
+import { VillageService } from './village.service';
 
 @Component({
-  selector: 'app-district',
-  templateUrl: './district.component.html',
+  selector: 'app-village',
+  templateUrl: './village.component.html',
   standalone: true,
   imports: [
     CommonModule,
-    EditDistrictComponent,
+    EditVillageComponent,
     CardModule,
     HttpClientModule,
     DialogModule,
@@ -54,49 +55,52 @@ import { EditDistrictComponent } from './edit-district/edit-district.component';
   ],
   providers: [ConfirmationService, MessageService],
 })
-export class DistrictComponent implements OnChanges, OnInit, OnDestroy {
+export class VillageComponent implements OnChanges, OnInit, OnDestroy {
   city: City[] = [];
   country: Country[] = [];
   district: District[] = [];
-  location: City[] = [];
+  village: Village[] = [];
+  location: District[] = [];
   uniqueCountries: string[] = [];
-  districtForm: FormGroup;
+  villageForm: FormGroup;
   subscriptions: Subscription[] = [];
-  Districtsubscriptions: Subscription = new Subscription();
+  Villagesubscriptions: Subscription = new Subscription();
   clickClose: EventEmitter<boolean> = new EventEmitter<boolean>();
   clickAddEdit: EventEmitter<any> = new EventEmitter<any>();
   selectedCountry: any = null;
   selectedCity: any = null;
   selectedDistrict: any = null;
+  selectedVillage: any = null;
   displayAddEditModal: boolean = false;
 
   constructor(
     private districtservice: DistrictService,
-    private cityservice: CityService,
+    private villageservice: VillageService,
     private messageService: MessageService,
     private fb: FormBuilder,
     private confirmationService: ConfirmationService
   ) {
-    this.districtForm = this.fb.group({
+    this.villageForm = this.fb.group({
       country: ['', Validators.required],
       city: ['', Validators.required],
       district: ['', Validators.required],
+      village: ['', Validators.required],
     });
   }
 
-  getDistrictList = () => {
-    this.Districtsubscriptions = this.districtservice
-      .getDistrict()
+  getVillageList = () => {
+    this.Villagesubscriptions = this.villageservice
+      .getVillage()
       .subscribe((response) => {
-        this.district = response;
-        this.district = [...this.district];
+        this.village = response;
+        this.village = [...this.village];
       });
-    console.log(this.district);
-    this.subscriptions.push(this.Districtsubscriptions);
+    console.log(this.village);
+    this.subscriptions.push(this.Villagesubscriptions);
   };
 
   ngOnInit(): void {
-    this.cityservice.getCity().subscribe((data) => {
+    this.districtservice.getDistrict().subscribe((data) => {
       this.location = data; //urlden çektiği dataları location dizisine atiyor.
       this.uniqueCountries = Array.from(new Set(data.map((l) => l.country)));
       //(data.map((l) => l.country)) datadaki her bir öğeye l diyor. sonra her l'nin county
@@ -107,9 +111,8 @@ export class DistrictComponent implements OnChanges, OnInit, OnDestroy {
       //(new set)=>countryleri distinctler,bir veri yapısı
       //(array.form)=>distictlenen verilerin dizileşmesini sağlar
     });
-    this.getDistrictList();
+    this.getVillageList();
   }
-
   onSelectionChange(event: any) {
     console.log('Selected country: ', this.selectedCountry);
     const filteredLocations = this.location.filter(
@@ -121,7 +124,6 @@ export class DistrictComponent implements OnChanges, OnInit, OnDestroy {
     //true dönenler l objelerini de filteredlocations a atiyoruz
     console.log('Filtered location: ', filteredLocations);
   }
-
   getCities(selectedCountry: string): string[] {
     return (
       this.location
@@ -135,9 +137,24 @@ export class DistrictComponent implements OnChanges, OnInit, OnDestroy {
     //Bu fonksiyon, her bir dizi elemanını kontrol eder ve elemanın dizideki ilk indeksini belirler (self.indexOf(value)). Eğer elemanın dizideki ilk indeksi, elemanın şu anki indeksiyle eşleşiyorsa (self.indexOf(value) === index), bu elemanın benzersiz olduğu anlamına gelir ve bu elemanı yeni dizide tutmak için true değeri döndürür. Eğer elemanın dizideki ilk indeksi, elemanın şu anki indeksiyle eşleşmiyorsa, bu elemanın daha önce dizide yer aldığı anlamına gelir ve bu elemanı yeni dizide tutmamak için false değeri döndürür.
   }
 
+  onSelectionChangeCity(event: any) {
+    console.log('Selected City: ', this.selectedCity);
+    const filteredLocations = this.location.filter(
+      (l) => l.city === this.selectedCity
+    );
+    console.log('Filtered location: ', filteredLocations);
+  }
+
+  getDistrict(selectedCity: string): string[] {
+    return this.location
+      .filter((l) => l.city === selectedCity)
+      .map((l) => l.district)
+      .filter((value, index, self) => self.indexOf(value) === index);
+  }
+
   ngOnChanges(): void {
-    if (this.selectedDistrict) {
-      this.districtForm.patchValue(this.selectedDistrict);
+    if (this.selectedVillage) {
+      this.villageForm.patchValue(this.selectedVillage);
       //productforma kendi verisini yerleştirmek için patchValue() kullanılır
     }
   }
@@ -149,23 +166,23 @@ export class DistrictComponent implements OnChanges, OnInit, OnDestroy {
   }
 
   saveOrUpdateProductToList(newData: any) {
-    this.getDistrictList();
+    this.getVillageList();
     //data gelince sayfa
   }
 
-  showEditModal(district: District) {
+  showEditModal(village: Village) {
+    console.log(village);
     this.displayAddEditModal = true;
-    this.selectedDistrict = district;
+    this.selectedVillage = village;
     //tıklanan mevcut producti gösterir.
   }
-
   ClearData() {
-    this.districtForm.reset();
+    this.villageForm.reset();
   }
 
-  AddDistrict() {
-    console.log(this.districtForm.value);
-    this.districtservice.AddDistrict(this.districtForm.value).subscribe(
+  AddVillage() {
+    console.log(this.villageForm.value);
+    this.villageservice.AddVillage(this.villageForm.value).subscribe(
       (response) => {
         this.clickAddEdit.emit(response);
         console.log(response);
@@ -175,7 +192,7 @@ export class DistrictComponent implements OnChanges, OnInit, OnDestroy {
           summary: 'Success',
           detail: 'Via MessageService',
         });
-        this.districtForm.reset();
+        this.villageForm.reset();
       },
       (error) => {
         console.log('Errror occured');
@@ -183,14 +200,14 @@ export class DistrictComponent implements OnChanges, OnInit, OnDestroy {
     );
   }
 
-  DeleteDistrict(district: District) {
+  DeleteVillage(village: Village) {
     this.confirmationService.confirm({
       message: 'Are you sure that you want to delete this sector?',
       accept: () => {
-        this.districtservice.DeleteDistrict(district.id).subscribe(
+        this.villageservice.DeleteVillage(village.id).subscribe(
           (response) => {
-            this.district = this.district.filter(
-              (data) => data.id !== district.id
+            this.village = this.village.filter(
+              (data) => data.id !== village.id
             );
             this.messageService.add({
               severity: 'success',

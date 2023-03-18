@@ -1,7 +1,9 @@
+<link rel="stylesheet" href="https://unpkg.com/primeflex@^3/primeflex.css">
 <p-card>
     <form [formGroup]="countryForm" class="float">
+        <h2>Country Arrangement</h2>
         <div class="field">
-            <label for="country">City: </label>
+            <label for="country">Country: </label>
             <input id="country" type="text" formControlName="country" class="m-2" placeholder="Country" pInputText>
             <small class="p-error block" *ngIf="
             countryForm.controls['country'].invalid &&
@@ -9,6 +11,8 @@
             ">Field is required</small>
             <button pButton pRipple type="button" label="Add" class="p-button-outlined m-2" (click)="AddCountry()"
                 [disabled]="!countryForm.valid"></button>
+            <button pButton pRipple type="button" label="Cancel"
+                class=" p-button-outlined p-button- p-button-success m-2" (click)="ClearData()"></button>
         </div>
     </form>
     <p></p>

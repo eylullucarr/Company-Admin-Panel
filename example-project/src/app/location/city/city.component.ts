@@ -128,6 +128,10 @@ export class CityComponent implements OnChanges, OnInit, OnDestroy {
     //tıklanan mevcut producti gösterir.
   }
 
+  ClearData() {
+    this.cityForm.reset();
+  }
+
   AddCountry() {
     console.log(this.cityForm.value);
     this.cityservice.AddCity(this.cityForm.value).subscribe(
@@ -140,6 +144,7 @@ export class CityComponent implements OnChanges, OnInit, OnDestroy {
           summary: 'Success',
           detail: 'Via MessageService',
         });
+        this.cityForm.reset();
       },
       (error) => {
         console.log('Errror occured');

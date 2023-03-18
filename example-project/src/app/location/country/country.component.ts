@@ -34,7 +34,6 @@ import { ConfirmDialogModule } from 'primeng/confirmdialog';
 @Component({
   selector: 'app-country',
   templateUrl: './country.component.html',
-  styleUrls: ['./country.component.css'],
   standalone: true,
   imports: [
     CommonModule,
@@ -114,6 +113,10 @@ export class CountryComponent implements OnInit, OnChanges, OnDestroy {
     //tıklanan mevcut producti gösterir.
   }
 
+  ClearData() {
+    this.countryForm.reset();
+  }
+
   AddCountry() {
     console.log(this.countryForm.value);
     this.countryservice.AddCountry(this.countryForm.value).subscribe(
@@ -126,6 +129,7 @@ export class CountryComponent implements OnInit, OnChanges, OnDestroy {
           summary: 'Success',
           detail: 'Via MessageService',
         });
+        this.countryForm.reset();
       },
       (error) => {
         console.log('Errror occured');

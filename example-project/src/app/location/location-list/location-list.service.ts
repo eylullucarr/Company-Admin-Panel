@@ -10,6 +10,6 @@ export class LocationListService {
   constructor(private http: HttpClient) {}
 
   getLocation(): Observable<LocationList[]> {
-    return this.http.get<LocationList[]>('http://localhost:3000/location');
+    return this.http.get<LocationList[]>('http://localhost:3000/village');
   }
 }
