@@ -7,8 +7,8 @@ import { AppRoutingModule } from './app-routing.module';
 import { AppComponent } from './app.component';
 import { CardModule } from 'primeng/card';
 import { NoopAnimationsModule } from '@angular/platform-browser/animations';
-import { ProductComponent } from './product/product.component';
 import { MenubarModule } from 'primeng/menubar';
+import { HttpClientModule } from '@angular/common/http';
 
 @NgModule({
   declarations: [AppComponent],
@@ -19,7 +19,7 @@ import { MenubarModule } from 'primeng/menubar';
     NoopAnimationsModule,
     InputTextModule,
     FormsModule,
-    ProductComponent,
+    HttpClientModule,
     CardModule,
     MenubarModule,
   ],

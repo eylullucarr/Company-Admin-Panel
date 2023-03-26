@@ -19,6 +19,11 @@ export class AppComponent {
   fillMenu() {
     this.items = [
       {
+        label: 'Login',
+        icon: 'pi pi-fw pi-user',
+        routerLink: '/login',
+      },
+      {
         label: 'Sector',
         icon: 'pi pi-fw pi-building',
         routerLink: '/sector',

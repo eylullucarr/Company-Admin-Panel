@@ -1,0 +1,34 @@
+<link rel="stylesheet" href="https://unpkg.com/primeflex@^3/primeflex.css">
+
+
+
+<p-card class="flex flex-wrap align-items-center justify-content-center card-container m-5">
+    <form [formGroup]="registerForm" class="float">
+        <div class="field">
+            <label for="username">Username: </label>
+            <input id="username" type="text" formControlName="username" class="m-2" placeholder="Username" pInputText>
+            <small class="p-error block" *ngIf="
+            registerForm.controls['username'].invalid &&
+            registerForm.controls['username'].dirty
+            ">Field is required</small>
+            <p></p>
+            <label for="password">Password: </label>
+            <input id="password" type="text" formControlName="password" class="m-2" placeholder="Password" pInputText>
+            <small class="p-error block" *ngIf="
+            registerForm.controls['password'].invalid &&
+            registerForm.controls['password'].dirty
+            ">Field is required</small>
+            <p></p>
+            <div class="flex flex-wrap align-items-center justify-content-center">
+                <button pButton pRipple type="button" label="Register" class="p-button-outlined m-2"
+                    (click)="AddRegister()" [disabled]="!registerForm.valid"></button>
+                <button pButton pRipple type="button" label="Or login?" class="p-button-outlined m-2"
+                    (click)="navigateTo('/login')"></button>
+
+            </div>
+
+        </div>
+    </form>
+</p-card>
+
+<p-toast position="bottom-center"></p-toast>
