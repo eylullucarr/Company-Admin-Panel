@@ -5,6 +5,34 @@
 <p-card class="flex flex-wrap align-items-center justify-content-center card-container m-5">
     <form [formGroup]="registerForm" class="float">
         <div class="field">
+            <label for="name">Name: </label>
+            <input id="name" type="text" formControlName="name" class="m-2" placeholder="Name" pInputText>
+            <small class="p-error block" *ngIf="
+            registerForm.controls['name'].invalid &&
+            registerForm.controls['name'].dirty
+            ">Field is required</small>
+            <p></p>
+            <label for="lastname">Lastname: </label>
+            <input id="lastname" type="text" formControlName="lastname" class="m-2" placeholder="Username" pInputText>
+            <small class="p-error block" *ngIf="
+            registerForm.controls['lastname'].invalid &&
+            registerForm.controls['lastname'].dirty
+            ">Field is required</small>
+            <p></p>
+            <label for="email">Email: </label>
+            <input id="email" type="text" formControlName="email" class="m-2" placeholder="Email" pInputText>
+            <small class="p-error block" *ngIf="
+            registerForm.controls['email'].invalid &&
+            registerForm.controls['email'].dirty
+            ">Field is required</small>
+            <p></p>
+            <label for="phone">Phone: </label>
+            <input id="phone" type="text" formControlName="phone" class="m-2" placeholder="Phone" pInputText>
+            <small class="p-error block" *ngIf="
+            registerForm.controls['phone'].invalid &&
+            registerForm.controls['phone'].dirty
+            ">Field is required</small>
+            <p></p>
             <label for="username">Username: </label>
             <input id="username" type="text" formControlName="username" class="m-2" placeholder="Username" pInputText>
             <small class="p-error block" *ngIf="
@@ -17,6 +45,13 @@
             <small class="p-error block" *ngIf="
             registerForm.controls['password'].invalid &&
             registerForm.controls['password'].dirty
+            ">Field is required</small>
+            <p></p>
+            <label for="password2">Password: </label>
+            <input id="password2" type="text" formControlName="password2" class="m-2" placeholder="Password" pInputText>
+            <small class="p-error block" *ngIf="
+            registerForm.controls['password2'].invalid &&
+            registerForm.controls['password2'].dirty
             ">Field is required</small>
             <p></p>
             <div class="flex flex-wrap align-items-center justify-content-center">

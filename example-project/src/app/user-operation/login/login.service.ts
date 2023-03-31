@@ -11,6 +11,9 @@ export class LoginService {
 
   addUser(postData: any) {
     return this.http.post('http://localhost:3000/user', postData);
+    // .subscribe((result: any) => {
+    //   localStorage.setItem('token', result.token);
+    // });
   }
 
   // getUser(data:any) {

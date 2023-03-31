@@ -35,7 +35,6 @@ import { ReactiveFormsModule } from '@angular/forms';
     ToastModule,
     TooltipModule,
     ReactiveFormsModule,
-
     TableModule,
   ],
   providers: [ConfirmationService, MessageService],

@@ -61,15 +61,20 @@ export class LoginComponent implements OnInit {
           );
         });
         if (user) {
-          console.log('selam');
+          console.log('debug');
           this.messageService.add({
             severity: 'success',
             summary: 'Login Succeeded',
             detail: 'Login Been Successfully',
           });
           this.loginForm.reset();
-          this.router.navigate(['/sector']);
+          this.router.navigate(['sector']);
         } else {
+          this.messageService.add({
+            severity: 'error  ',
+            summary: 'Login  Failed',
+            detail: 'Please chech your username and password!',
+          });
           console.log('Errror occured');
         }
       },
