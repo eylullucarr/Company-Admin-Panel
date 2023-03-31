@@ -5,16 +5,11 @@ import { CountryComponent } from './location/country/country.component';
 import { DistrictComponent } from './location/district/district.component';
 import { LocationListComponent } from './location/location-list/location-list.component';
 import { VillageComponent } from './location/village/village.component';
+import { MainPageComponent } from './main-page/main-page.component';
 import { LoginComponent } from './user-operation/login/login.component';
 import { RegisterComponent } from './user-operation/register/register.component';
 
 const routes: Routes = [
-  {
-    path: '',
-    redirectTo: 'home',
-    pathMatch: 'full',
-  },
-
   {
     path: 'sector',
     pathMatch: 'full',
@@ -55,6 +50,11 @@ const routes: Routes = [
     path: 'register',
     pathMatch: 'full',
     component: RegisterComponent,
+  },
+  {
+    path: 'main-page',
+    pathMatch: 'full',
+    component: MainPageComponent,
   },
 ];
 

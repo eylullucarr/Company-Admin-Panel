@@ -10,7 +10,7 @@ import { ConfirmDialogModule } from 'primeng/confirmdialog';
 import { InputTextModule } from 'primeng/inputtext';
 import { ToastModule } from 'primeng/toast';
 import { TooltipModule } from 'primeng/tooltip';
-import { LoginService } from '../login/login.service';
+import { LoginService } from '../login.service';
 import { v4 as uuidv4 } from 'uuid';
 @Component({
   selector: 'app-register',

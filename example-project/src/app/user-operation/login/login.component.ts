@@ -10,7 +10,8 @@ import { ConfirmDialogModule } from 'primeng/confirmdialog';
 import { InputTextModule } from 'primeng/inputtext';
 import { ToastModule } from 'primeng/toast';
 import { TooltipModule } from 'primeng/tooltip';
-import { LoginService } from './login.service';
+import { LoginService } from '../login.service';
+import { StorageServiceService } from '../storage-service.service';
 
 @Component({
   selector: 'app-login',
@@ -41,7 +42,8 @@ export class LoginComponent implements OnInit {
     private fb: FormBuilder,
     private loginService: LoginService,
     private messageService: MessageService,
-    private router: Router
+    private router: Router,
+    private storageService: StorageServiceService
   ) {}
 
   ngOnInit(): void {}
@@ -50,25 +52,32 @@ export class LoginComponent implements OnInit {
     this.router.navigate([route]);
   }
 
+  generateToken(guidID: any) {
+    const token = btoa(guidID); // UUID'yi Base64'e kodla
+    this.storageService.setToken(token); // Tokeni Local Storage'a kaydet
+  }
+
   Login() {
     this.loginService.getUser().subscribe(
       (response) => {
         console.log(response);
         const user = response.find((a: any) => {
           return (
-            a.username === this.loginForm.value.username &&
-            a.password === this.loginForm.value.password
+            (a.username === this.loginForm.value.username &&
+              a.password === this.loginForm.value.password) ||
+            (a.email === this.loginForm.value.username &&
+              a.password === this.loginForm.value.password)
           );
         });
         if (user) {
-          console.log('debug');
+          this.generateToken(user.guidID);
           this.messageService.add({
             severity: 'success',
             summary: 'Login Succeeded',
             detail: 'Login Been Successfully',
           });
+
           this.loginForm.reset();
-          this.router.navigate(['sector']);
         } else {
           this.messageService.add({
             severity: 'error  ',
