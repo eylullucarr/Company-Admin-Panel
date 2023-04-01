@@ -10,6 +10,7 @@ import { NoopAnimationsModule } from '@angular/platform-browser/animations';
 import { MenubarModule } from 'primeng/menubar';
 import { HttpClientModule } from '@angular/common/http';
 import { UserEditComponent } from './user/user-edit/user-edit.component';
+import { LoginComponent } from './user-operation/login/login.component';
 
 @NgModule({
   declarations: [AppComponent],
@@ -23,6 +24,7 @@ import { UserEditComponent } from './user/user-edit/user-edit.component';
     HttpClientModule,
     CardModule,
     MenubarModule,
+    LoginComponent,
   ],
   providers: [],
   bootstrap: [AppComponent],

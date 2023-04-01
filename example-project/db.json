@@ -1095,10 +1095,15 @@
   ],
   "user": [
     {
+      "username": "eyl",
+      "email": "eylo2010@hotmail.com",
+      "password": "123",
+      "password2": "123",
       "name": "eylül",
       "lastname": "uçar",
-      "phone": "05376909382",
-      "id": 1
+      "phone": "05376909323",
+      "guidID": "a1c472a5-6c0d-4e64-ba2c-66444c16806f",
+      "id": 2
     }
   ]
 }

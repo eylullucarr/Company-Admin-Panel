@@ -5,10 +5,12 @@ import { MenuItem } from 'primeng/api';
 
 @Component({
   selector: 'app-root',
-  template: `<p-menubar [model]="items"></p-menubar>
-    <router-outlet></router-outlet>`,
+  template: `
+    <p-menubar [model]="items"></p-menubar>
+    <router-outlet (LoginEvent)="ngOnInit()"></router-outlet>
+  `,
 })
-export class AppComponent implements OnChanges, OnInit {
+export class AppComponent implements OnInit {
   items: MenuItem[] = [];
   title = 'example-project';
 
@@ -16,16 +18,6 @@ export class AppComponent implements OnChanges, OnInit {
 
   ngOnInit() {
     this.fillMenu(this.IsLoged());
-  }
-
-  ngOnChanges(changes: SimpleChanges) {
-    if (this.IsLoged() == true) {
-      this.router.navigate(['main-page']);
-      this.ngOnInit();
-    } else {
-      this.router.navigate(['login']);
-      this.ngOnInit();
-    }
   }
 
   IsLoged() {
@@ -118,6 +110,6 @@ export class AppComponent implements OnChanges, OnInit {
 
   logout() {
     localStorage.removeItem('token');
-    this.router.navigate(['login']);
+    // this.router.navigate(['login']);
   }
 }
