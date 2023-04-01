@@ -8,6 +8,7 @@ import { VillageComponent } from './location/village/village.component';
 import { MainPageComponent } from './main-page/main-page.component';
 import { LoginComponent } from './user-operation/login/login.component';
 import { RegisterComponent } from './user-operation/register/register.component';
+import { UserComponent } from './user/user.component';
 
 const routes: Routes = [
   {
@@ -20,6 +21,11 @@ const routes: Routes = [
     path: 'location-list',
     pathMatch: 'full',
     component: LocationListComponent,
+  },
+  {
+    path: 'user',
+    pathMatch: 'full',
+    component: UserComponent,
   },
   {
     path: 'country',

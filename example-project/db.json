@@ -1095,26 +1095,10 @@
   ],
   "user": [
     {
-      "username": "eylulucar",
-      "email": "eylo2010@hotmail.com",
-      "password": "123",
-      "password2": "123",
       "name": "eylül",
       "lastname": "uçar",
-      "phone": "05376909383",
-      "guidID": "0d124c9e-6caa-44b3-bbb0-8af7837649f6",
+      "phone": "05376909382",
       "id": 1
-    },
-    {
-      "username": "ecren",
-      "email": "ecren@gmail.com",
-      "password": "123",
-      "password2": "123",
-      "name": "ecren",
-      "lastname": "esen",
-      "phone": "05376909323",
-      "guidID": "947d7f25-0141-4c2e-a706-9b465634aa0f",
-      "id": 2
     }
   ]
 }

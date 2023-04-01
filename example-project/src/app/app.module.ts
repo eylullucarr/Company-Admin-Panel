@@ -9,7 +9,7 @@ import { CardModule } from 'primeng/card';
 import { NoopAnimationsModule } from '@angular/platform-browser/animations';
 import { MenubarModule } from 'primeng/menubar';
 import { HttpClientModule } from '@angular/common/http';
-import { MainPageComponent } from './main-page/main-page.component';
+import { UserEditComponent } from './user/user-edit/user-edit.component';
 
 @NgModule({
   declarations: [AppComponent],

@@ -19,14 +19,20 @@ export class AppComponent implements OnChanges, OnInit {
   }
 
   ngOnChanges(changes: SimpleChanges) {
-    this.fillMenu(this.IsLoged());
+    if (this.IsLoged() == true) {
+      this.router.navigate(['main-page']);
+      this.ngOnInit();
+    } else {
+      this.router.navigate(['login']);
+      this.ngOnInit();
+    }
   }
 
   IsLoged() {
     let visiblty;
     if (localStorage.getItem('token')) {
       console.log('a');
-      this.router.navigate(['sector']);
+      this.router.navigate(['main-page']);
       visiblty = true;
     } else {
       this.router.navigate(['login']);
@@ -94,16 +100,24 @@ export class AppComponent implements OnChanges, OnInit {
           },
         ],
       },
+      {
+        label: 'Users',
+        icon: 'pi pi-fw pi-user',
+        routerLink: '/user',
+        visible: visiblty,
+      },
       { separator: true },
       {
         label: 'Log Out',
         icon: 'pi pi-sign-out',
         command: () => this.logout(),
+        visible: visiblty,
       },
     ];
   }
 
   logout() {
     localStorage.removeItem('token');
+    this.router.navigate(['login']);
   }
 }
