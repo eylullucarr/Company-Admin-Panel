@@ -7,7 +7,8 @@ import { MenuItem } from 'primeng/api';
   selector: 'app-root',
   template: `
     <p-menubar [model]="items"></p-menubar>
-    <router-outlet (LoginEvent)="ngOnInit()"></router-outlet>
+    <app-login (LoginEvent)="ngOnInit()"/>
+    <router-outlet ></router-outlet>
   `,
 })
 export class AppComponent implements OnInit {
@@ -110,6 +111,7 @@ export class AppComponent implements OnInit {
 
   logout() {
     localStorage.removeItem('token');
-    // this.router.navigate(['login']);
+    this.fillMenu(this.IsLoged());
+    this.router.navigate(['login']);
   }
 }
