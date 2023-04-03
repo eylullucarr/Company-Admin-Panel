@@ -2,36 +2,45 @@ import { Component, SimpleChanges } from '@angular/core';
 import { Router } from '@angular/router';
 import { OnChanges, OnInit } from '@angular/core';
 import { MenuItem } from 'primeng/api';
+import { StorageServiceService } from './user-operation/storage-service.service';
 
 @Component({
   selector: 'app-root',
   template: `
     <p-menubar [model]="items"></p-menubar>
-    <app-login (LoginEvent)="ngOnInit()"/>
-    <router-outlet ></router-outlet>
+    <router-outlet></router-outlet>
   `,
 })
 export class AppComponent implements OnInit {
   items: MenuItem[] = [];
   title = 'example-project';
 
-  constructor(private router: Router) {}
-
-  ngOnInit() {
-    this.fillMenu(this.IsLoged());
+  constructor(
+    private router: Router,
+    private storageService: StorageServiceService
+  ) {
+    this.storageService.isLoged.subscribe((message: boolean) => {
+      if (message == true) {
+        this.fillMenu(message);
+        this.router.navigate(['main-page']);
+      } else {
+        this.fillMenu(message);
+        this.router.navigate(['login']);
+      }
+    });
+    this.storageService.isLogout.subscribe((message: boolean) => {
+      if (message == true) {
+        this.fillMenu(!message);
+        this.router.navigate(['login']);
+      }
+    });
   }
 
-  IsLoged() {
-    let visiblty;
-    if (localStorage.getItem('token')) {
-      console.log('a');
-      this.router.navigate(['main-page']);
-      visiblty = true;
-    } else {
-      this.router.navigate(['login']);
-      visiblty = false;
-    }
-    return visiblty;
+  ngOnInit() {
+    this.fillMenu(this.storageService.getToken());
+    //!burayı yapamadım :( Alternatif yol bulundu ama event üzerinden kontrol gerçekleşmiyor
+
+    //!nasıl sayfa yenilendiğinde herhangi bir sayfa değil de doğru sayfalar geliyor????
   }
 
   fillMenu(visiblty: any) {
@@ -103,15 +112,11 @@ export class AppComponent implements OnInit {
       {
         label: 'Log Out',
         icon: 'pi pi-sign-out',
-        command: () => this.logout(),
+        command: () => {
+          this.storageService.removeToken();
+        },
         visible: visiblty,
       },
     ];
-  }
-
-  logout() {
-    localStorage.removeItem('token');
-    this.fillMenu(this.IsLoged());
-    this.router.navigate(['login']);
   }
 }

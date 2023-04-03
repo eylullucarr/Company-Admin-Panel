@@ -40,8 +40,6 @@ import { StorageServiceService } from '../storage-service.service';
   providers: [MessageService],
 })
 export class LoginComponent implements OnInit {
-  @Output() LoginEvent: EventEmitter<boolean> = new EventEmitter<boolean>();
-
   loginForm = this.fb.group({
     username: ['', Validators.required],
     password: ['', Validators.required],
@@ -80,7 +78,6 @@ export class LoginComponent implements OnInit {
         });
         if (user) {
           this.generateToken(user.guidID);
-          this.LoginEvent.emit(true);
           this.messageService.add({
             severity: 'success',
             summary: 'Login Succeeded',
